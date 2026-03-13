@@ -95,9 +95,10 @@ geeOut/
 Each R script that relies on Earth Engine outputs includes a **static link to the corresponding Earth Engine script in its preamble**. Running these scripts requires:
 
 - access to a web browser  
-- a valid Google Earth Engine account  
+- a valid Google Earth Engine account
 
 However, executing the Earth Engine scripts is **not necessary to reproduce the main analyses**, because the exported Earth Engine outputs used in the paper are already included in the repository.
+
 ---
 # Script Inventory
 
