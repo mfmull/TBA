@@ -52,7 +52,7 @@ Example:
 
 ```r
 setwd("0_PreprocessIGRAC")
-source("script_name.R")
+source("0_Preprocess.R")
 ```
 
 Run scripts **in each folder in the order indicated by their filenames**.
