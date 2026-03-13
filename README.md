@@ -1,15 +1,7 @@
 
 # Replication code for: Border-proximate irrigation and groundwater depletion in internationally shared aquifers
 
-This repository contains the code used in the manuscript "Border-proximate irrigation and groundwater depletion in internationally shared aquifers" by Muller, Faure, Davis, Chiarelli and Hung (2025). 
-
-The analysis combines:
-
-- Local spatial processing in **R**
-- Satellite-derived indicators processed using **Google Earth Engine (GEE)**
-- Vector spatial operations on aquifer and basin geometries
-
-Large raw datasets are **not included in the repository** due to GitHub file size limits. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk in the inventory
+This repository contains the code used in the manuscript "Border-proximate irrigation and groundwater depletion in internationally shared aquifers" by Muller, Faure, Davis, Chiarelli and Hung (2026). 
 
 ---
 
@@ -91,7 +83,7 @@ RawData/
   GSRB/
 ```
 
-These files are not included in the repository. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk in the inventory
+These files are not included in the repository. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk * in the inventory below.
 
 ---
 # Script Inventory
