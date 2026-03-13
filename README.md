@@ -65,16 +65,14 @@ Pipeline order:
 
 ---
 
-# Raw Data
+# Input Data
 
-Raw datasets must be placed locally in:
-
+Raw datasets are **not included in the repository** due to size constraints and licensing restrictions. To reproduce the full preprocessing workflow, the required raw data should be placed locally in the directory:
 ```
 RawData/
 ```
 
-Example structure:
-
+A typical directory structure is:
 ```
 RawData/
   IGRAC/TBA2025/
@@ -82,9 +80,24 @@ RawData/
   Hydrosheds/
   GSRB/
 ```
+These datasets are used only in the **preprocessing stage** of the pipeline.
 
-These files are not included in the repository. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk * in the inventory below.
+Most analysis scripts operate on **processed datasets that are already included in this repository**, so running the full preprocessing workflow is **not required to reproduce the main results**. Scripts that rely on raw datasets are marked with an asterisk `*` in the script inventory below.
 
+## Google Earth Engine preprocessing
+
+Some large-scale raster reduction operations were performed using **Google Earth Engine (GEE)**. These operations generate intermediate datasets used by several scripts in the irrigation and wells analyses.
+
+Outputs from these Earth Engine workflows are included in this repository, typically within directories named:
+```
+geeOut/
+```
+Each R script that relies on Earth Engine outputs includes a **static link to the corresponding Earth Engine script in its preamble**. Running these scripts requires:
+
+- access to a web browser  
+- a valid Google Earth Engine account  
+
+However, executing the Earth Engine scripts is **not necessary to reproduce the main analyses**, because the exported Earth Engine outputs used in the paper are already included in the repository.
 ---
 # Script Inventory
 
