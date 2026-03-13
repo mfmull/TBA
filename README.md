@@ -9,7 +9,7 @@ The analysis combines:
 - Satellite-derived indicators processed using **Google Earth Engine (GEE)**
 - Vector spatial operations on aquifer and basin geometries
 
-Large raw datasets are **not included in the repository** due to GitHub file size limits.
+Large raw datasets are **not included in the repository** due to GitHub file size limits. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk in the inventory
 
 ---
 
@@ -91,7 +91,7 @@ RawData/
   GSRB/
 ```
 
-These files are not included in the repository.
+These files are not included in the repository. Note that all analysis scripts run on pre-processed data that are included in the repository. Preprocessing scripts requiring raw data (and producing the processed data on which the other scripts run) are marked with an asterisk in the inventory
 
 ---
 # Script Inventory
@@ -102,7 +102,7 @@ The following scripts are included in the repository.
 
 | Script | Description |
 |------|-------------|
-| `0_Peprocess.R` | Splits IGRAC transboundary aquifers by country boundaries, flags and resolves country-membership discrepancies, and exports cleaned aquifer-country polygons plus supporting SI outputs. |
+| *`0_Peprocess.R` | Splits IGRAC transboundary aquifers by country boundaries, flags and resolves country-membership discrepancies, and exports cleaned aquifer-country polygons plus supporting SI outputs. |
 
 ### 1_Map
 
@@ -114,7 +114,7 @@ The following scripts are included in the repository.
 
 | Script | Description |
 |------|-------------|
-| `getWells.R` | Assembles the cleaned well-level dataset from GEE exports, links wells to countries, nearest borders, and aquifers, and exports well- and aquifer-level summaries. |
+| *`getWells.R` | Assembles the cleaned well-level dataset from GEE exports, links wells to countries, nearest borders, and aquifers, and exports well- and aquifer-level summaries. |
 | `FirstStages.R` | Estimates first-stage well regressions by aquifer-country unit under baseline OLS, robust-regression, and spatial-declustering specifications, then exports unit-level coefficients. |
 | `1_preferred.R` | Runs the preferred second-stage matched meta-regression comparing transboundary and non-transboundary aquifer-country units. |
 | `2_SI_AltCov.R` | Repeats the preferred second-stage analysis using an alternative set of matching covariates. |
@@ -143,10 +143,10 @@ The following scripts are included in the repository.
 
 | Script | Description |
 |------|-------------|
-| `0_defMatchPop.R` | Identifies candidate HydroSHEDS control basins that resemble each transboundary aquifer across basin levels and exports candidate-match files. |
-| `1_getBasins.R` | Builds the control-basin polygon dataset matched to IGRAC transboundary aquifers for downstream analysis and GEE processing. |
-| `2_buildDataset.R` | Builds the master irrigation analysis table by combining GEE-derived summaries for treated aquifers and matched control basins. |
-| `2_buildDataset_J.R` | Builds the corresponding irrigation analysis table using the Jasechko split-aquifer dataset for robustness / replication exercises. |
+| *`0_defMatchPop.R` | Identifies candidate HydroSHEDS control basins that resemble each transboundary aquifer across basin levels and exports candidate-match files. |
+| *`1_getBasins.R` | Builds the control-basin polygon dataset matched to IGRAC transboundary aquifers for downstream analysis and GEE processing. |
+| *`2_buildDataset.R` | Builds the master irrigation analysis table by combining GEE-derived summaries for treated aquifers and matched control basins. |
+| *`2_buildDataset_J.R` | Builds the corresponding irrigation analysis table using the Jasechko split-aquifer dataset for robustness / replication exercises. |
 | `3_GenNonOverlappingCtrl.R` | Generates repeated random sets of non-overlapping HydroSHEDS control basins from the candidate basin pool. |
 | `4_Analyse.R` | Runs the main irrigation matching pipeline across many candidate control sets, estimates mixed-effects outcome models, and saves result objects for downstream comparison. |
 | `Analyse_J.R` | Runs the irrigation matching and mixed-effects analysis on the Jasechko-based robustness dataset and produces the corresponding regression table. |
@@ -159,7 +159,7 @@ The following scripts are included in the repository.
 
 | Script | Description |
 |------|-------------|
-| `1_makeDyad.R` | Builds transboundary aquifer dyads, attaches agreement scores and GEE-derived indicators for each side of the dyad, and exports the final dyad dataset. |
+| *`1_makeDyad.R` | Builds transboundary aquifer dyads, attaches agreement scores and GEE-derived indicators for each side of the dyad, and exports the final dyad dataset. |
 | `Fig4_and_mosaic.R` | Produces the main dyad-typology figure by classifying aquifer dyads according to border-proximate irrigation patterns and summarizing the resulting classes graphically. |
 | `FigSI_200.R` | Repeats the dyad-typology analysis using the 200 km buffer-based inputs as a sensitivity check. |
 | `FigSI_5.R` | Repeats the dyad-typology analysis using the 5 km buffer-based inputs as a sensitivity check. |
