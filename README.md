@@ -1,18 +1,21 @@
+
 # Transboundary Aquifer Analysis Pipeline
 
 This repository contains the code used to construct spatial datasets, process groundwater and irrigation indicators, generate basin typologies, and produce figures used in the associated research project.
 
 The analysis combines:
 
-- local spatial processing in **R**
-- satellite-derived indicators processed using **Google Earth Engine (GEE)**
-- vector spatial operations on aquifer and basin geometries
+- Local spatial processing in **R**
+- Satellite-derived indicators processed using **Google Earth Engine (GEE)**
+- Vector spatial operations on aquifer and basin geometries
 
 Large raw datasets are **not included in the repository** due to GitHub file size limits.
 
-## Repository Structure
+---
 
-```text
+# Repository Structure
+
+```
 0_PreprocessIGRAC/
 1_Map/
 2_Wells/
@@ -26,316 +29,214 @@ SI2.csv
 
 Each directory corresponds to a stage in the analysis pipeline.
 
-## Workflow Overview
+---
 
-```text
+# Workflow Overview
+
+```
 RawData
    │
    ▼
 0_PreprocessIGRAC
-   │  Prepare aquifer geometries
-   │  Split aquifers by national borders
-   │  Resolve discrepancies in country membership
    ▼
 2_Wells
-   │  Construct well datasets
-   │  Aggregate well observations to basin level
    ▼
 3_Irrig
-   │  Construct irrigation indicators
-   │  Build matched basin samples
    ▼
 4_Typology
-   │  Construct basin typologies
-   │  Generate classification datasets
    ▼
 1_Map
    ▼
-Figures used in the manuscript
+Figures
 ```
 
-## Script Execution
+---
+
+# Running the Analysis
 
 Scripts are designed to be executed **from within their own directory**.
-
-Before running a script, set the working directory to the folder containing the script. Then run the scripts in that folder **in the order indicated by their filenames**.
 
 Example:
 
 ```r
 setwd("0_PreprocessIGRAC")
-source("0_Peprocess.R")
+source("script_name.R")
 ```
 
-Run the pipeline folders in this order:
+Run scripts **in each folder in the order indicated by their filenames**.
 
-```text
-0_PreprocessIGRAC
-2_Wells
-3_Irrig
-4_Typology
-1_Map
+Pipeline order:
+
+```
+0_PreprocessIGRAC → 2_Wells → 3_Irrig → 4_Typology → 1_Map
 ```
 
-Within each folder, execute the scripts in sequence.
+---
 
-## Raw Data
+# Raw Data
 
-Raw datasets are **not included in the repository**.
+Raw datasets must be placed locally in:
 
-To reproduce the analysis, create the following local directory structure:
-
-```text
+```
 RawData/
-
-IGRAC/
-  TBA2025/
-    tba_map_2025.shp
-
-geoBoundariesCGAZ_ADM0/
-  geoBoundariesCGAZ_ADM0.shp
-
-Hydrosheds/
-  hybas_lake_*.shp
-
-GSRB/
-  GSRB_Level0.shp
-
-jasechko_aquifs/
-  jasechko_et_al_2024_aquifers.shp
-
-Fraser2023_Agreements/
-  _agreements.csv
 ```
 
-These inputs include aquifer geometries, country boundaries, hydrological basin layers, and other external spatial/tabular datasets used throughout the pipeline.
+Example structure:
 
-## Google Earth Engine Components
-
-Parts of the irrigation-data construction rely on **Google Earth Engine (GEE)**.
-
-The typical workflow is:
-
-```text
-Google Earth Engine
-       │
-       ▼
-Export raster or tabular datasets
-       │
-       ▼
+```
 RawData/
-       │
-       ▼
-Local processing with R scripts
+  IGRAC/TBA2025/
+  geoBoundariesCGAZ_ADM0/
+  Hydrosheds/
+  GSRB/
 ```
 
-Outputs generated from GEE should be downloaded and placed in `RawData/` before running the relevant irrigation scripts.
+These files are not included in the repository.
 
-## Script Inventory
+---
+
+# Script Inventory
+
+The following scripts are included in the repository.
 
 ### 0_PreprocessIGRAC
 
 | Script | Description |
-|---|---|
-| `0_Peprocess.R` | Script in `0_PreprocessIGRAC` stage of the pipeline. |
+|------|-------------|
+| `0_Peprocess.R` | Splits IGRAC transboundary aquifers by country boundaries, flags and resolves country-membership discrepancies, and exports cleaned aquifer-country polygons plus supporting SI outputs. |
 
 ### 1_Map
 
 | Script | Description |
-|---|---|
-| `Fig1.R` | Script in `1_Map` stage of the pipeline. |
+|------|-------------|
+| `Fig1.R` | Builds Figure 1, a stacked bar chart that decomposes irrigated area from GEE outputs into surface-water vs groundwater irrigation and TBA vs non-TBA groundwater components. |
 
 ### 2_Wells
 
 | Script | Description |
-|---|---|
-| `1_data/getWells.R` | Script in `2_Wells` stage of the pipeline. |
-| `2_firststage/FirstStages.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/1_preferred.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/2_SI_AltCov.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/3_SI_LMRobust.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/4_SI_Umatched.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/5_SI_dropTopSE.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/6_SI_matchArchitecture.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/7_SI_nMin.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/8_SI_loo.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/8_SI_looCountry.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/9_SI_FE.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/9_SI_dclust.R` | Script in `2_Wells` stage of the pipeline. |
-| `3_secondstage/9_clustRobustSE.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/Fig2A.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/Fig2B.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS1S2.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS3.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS4.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS5.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS6.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/FigS7.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/TabS1.R` | Script in `2_Wells` stage of the pipeline. |
-| `4_figures/TabS2S3.R` | Script in `2_Wells` stage of the pipeline. |
+|------|-------------|
+| `getWells.R` | Assembles the cleaned well-level dataset from GEE exports, links wells to countries, nearest borders, and aquifers, and exports well- and aquifer-level summaries. |
+| `FirstStages.R` | Estimates first-stage well regressions by aquifer-country unit under baseline OLS, robust-regression, and spatial-declustering specifications, then exports unit-level coefficients. |
+| `1_preferred.R` | Runs the preferred second-stage matched meta-regression comparing transboundary and non-transboundary aquifer-country units. |
+| `2_SI_AltCov.R` | Repeats the preferred second-stage analysis using an alternative set of matching covariates. |
+| `3_SI_LMRobust.R` | Repeats the second-stage analysis using first-stage estimates derived from robust regression rather than OLS. |
+| `4_SI_Umatched.R` | Estimates pooled second-stage effects without any covariate matching. |
+| `5_SI_dropTopSE.R` | Re-runs the preferred second-stage analysis after excluding predefined high-leverage / high-uncertainty aquifers. |
+| `6_SI_matchArchitecture.R` | Tests sensitivity of second-stage results to the matching architecture, including nearest-neighbor matching and different control-to-treated ratios. |
+| `7_SI_nMin.R` | Tests sensitivity of second-stage results to the minimum wells-per-unit threshold used to retain aquifer-country units. |
+| `8_SI_loo.R` | Performs a leave-k-out robustness exercise by repeatedly dropping subsets of transboundary aquifers and re-estimating pooled effects. |
+| `8_SI_looCountry.R` | Performs an overlap-country leave-one-out robustness check for the preferred second-stage analysis. |
+| `9_SI_FE.R` | Re-estimates the second-stage model using country fixed effects instead of the multilevel random-effects specification. |
+| `9_SI_dclust.R` | Summarizes how second-stage results change across alternative spatial declustering settings used in the first stage. |
+| `9_clustRobustSE.R` | Re-estimates the preferred second-stage model while reporting country-cluster-robust inference for fixed effects. |
+| `Fig2A.R` | Produces map-based visualizations of first-stage aquifer-country estimates and interactive close-up maps of well-level groundwater depletion patterns. |
+| `Fig2B.R` | Creates the compact coefficient-style visualization used for the preferred second-stage meta-regression results. |
+| `FigS1S2.R` | Produces matching diagnostics and covariate-balance figures for the second-stage analysis. |
+| `FigS3.R` | Visualizes sensitivity of second-stage estimates to the nearest-neighbor matching ratio. |
+| `FigS4.R` | Visualizes sensitivity of second-stage estimates to the minimum wells-per-unit threshold (`nMin`). |
+| `FigS5.R` | Visualizes sensitivity of second-stage estimates to the leave-k-out transboundary-aquifer exercise. |
+| `FigS6.R` | Visualizes how pooled second-stage estimates vary with the spatial declustering radius used in first-stage estimation. |
+| `FigS7.R` | Visualizes the overlap-country leave-one-out results and summarizes how much identifying overlap is concentrated in countries containing both treated and control segments. |
+| `TabS1.R` | Builds supplementary summary tables from the first-stage data, including matched-weighted comparisons between transboundary and non-transboundary units. |
+| `TabS2S3.R` | Builds publication-ready regression tables comparing the preferred second-stage results with robustness and alternative specifications. |
 
 ### 3_Irrig
 
 | Script | Description |
-|---|---|
-| `0_prepControls/0_defMatchPop.R` | Script in `3_Irrig` stage of the pipeline. |
-| `0_prepControls/1_getBasins.R` | Script in `3_Irrig` stage of the pipeline. |
-| `1_buildData/2_buildDataset.R` | Script in `3_Irrig` stage of the pipeline. |
-| `1_buildData/3_GenNonOverlappingCtrl.R` | Script in `3_Irrig` stage of the pipeline. |
-| `2_RunAnalysis/4_Analyse.R` | Script in `3_Irrig` stage of the pipeline. |
-| `3_Visualize/Fig3.R` | Script in `3_Irrig` stage of the pipeline. |
-| `3_Visualize/FigSIViolin.R` | Script in `3_Irrig` stage of the pipeline. |
-| `3_Visualize/TableBestMatch.R` | Script in `3_Irrig` stage of the pipeline. |
-| `3_Visualize/TableSummary.R` | Script in `3_Irrig` stage of the pipeline. |
-| `4_Robustness/JasechkoReplication/2_buildDataset_J.R` | Script in `3_Irrig` stage of the pipeline. |
-| `4_Robustness/JasechkoReplication/Analyse_J.R` | Script in `3_Irrig` stage of the pipeline. |
+|------|-------------|
+| `0_defMatchPop.R` | Identifies candidate HydroSHEDS control basins that resemble each transboundary aquifer across basin levels and exports candidate-match files. |
+| `1_getBasins.R` | Builds the control-basin polygon dataset matched to IGRAC transboundary aquifers for downstream analysis and GEE processing. |
+| `2_buildDataset.R` | Builds the master irrigation analysis table by combining GEE-derived summaries for treated aquifers and matched control basins. |
+| `2_buildDataset_J.R` | Builds the corresponding irrigation analysis table using the Jasechko split-aquifer dataset for robustness / replication exercises. |
+| `3_GenNonOverlappingCtrl.R` | Generates repeated random sets of non-overlapping HydroSHEDS control basins from the candidate basin pool. |
+| `4_Analyse.R` | Runs the main irrigation matching pipeline across many candidate control sets, estimates mixed-effects outcome models, and saves result objects for downstream comparison. |
+| `Analyse_J.R` | Runs the irrigation matching and mixed-effects analysis on the Jasechko-based robustness dataset and produces the corresponding regression table. |
+| `Fig3.R` | Produces the main irrigation figure showing mirrored density distributions of estimated treatment effects across candidate control sets. |
+| `FigSIViolin.R` | Produces supplementary mirrored-density figures for additional irrigation outcomes and robustness specifications. |
+| `TableBestMatch.R` | Generates the LaTeX regression table based on the top-ranked irrigation models from the matching analysis. |
+| `TableSummary.R` | Generates the summary-statistics table for the aquifer-level irrigation dataset. |
 
 ### 4_Typology
 
 | Script | Description |
-|---|---|
-| `1_makeDyad.R` | Script in `4_Typology` stage of the pipeline. |
-| `Fig4_and_mosaic.R` | Script in `4_Typology` stage of the pipeline. |
-| `FigSI_200.R` | Script in `4_Typology` stage of the pipeline. |
-| `FigSI_5.R` | Script in `4_Typology` stage of the pipeline. |
-| `FigSI_IR.R` | Script in `4_Typology` stage of the pipeline. |
-| `FigSI_eps.R` | Script in `4_Typology` stage of the pipeline. |
-| `FigSI_thresh.R` | Script in `4_Typology` stage of the pipeline. |
+|------|-------------|
+| `1_makeDyad.R` | Builds transboundary aquifer dyads, attaches agreement scores and GEE-derived indicators for each side of the dyad, and exports the final dyad dataset. |
+| `Fig4_and_mosaic.R` | Produces the main dyad-typology figure by classifying aquifer dyads according to border-proximate irrigation patterns and summarizing the resulting classes graphically. |
+| `FigSI_200.R` | Repeats the dyad-typology analysis using the 200 km buffer-based inputs as a sensitivity check. |
+| `FigSI_5.R` | Repeats the dyad-typology analysis using the 5 km buffer-based inputs as a sensitivity check. |
+| `FigSI_IR.R` | Repeats the dyad-typology analysis using the alternative IR-based classification setup as a sensitivity check. |
+| `FigSI_eps.R` | Tests sensitivity of the dyad-typology classification to the epsilon parameter used in class assignment. |
+| `FigSI_thresh.R` | Tests sensitivity of the dyad-typology classification to the threshold parameter used in class assignment. |
 
-## Software Requirements
 
-The repository is written in **R** and depends on the packages below.
+---
 
-This list was compiled by scanning all uploaded `.R` scripts for explicit `library()` and `require()` calls, so it is the exhaustive set of packages referenced directly in the codebase.
+# Software Requirements
 
-- `broom.mixed`
-- `clubSandwich`
-- `cobalt`
-- `countrycode`
-- `dplyr`
-- `furrr`
-- `future`
-- `future.apply`
-- `ggalluvial`
-- `ggplot2`
-- `ggrepel`
-- `grid`
-- `Hmisc`
-- `kableExtra`
-- `knitr`
-- `lme4`
-- `lmerTest`
-- `lwgeom`
-- `mapview`
-- `MASS`
-- `MatchIt`
-- `metafor`
-- `modelsummary`
-- `multcompView`
-- `nngeo`
-- `parallel`
-- `patchwork`
-- `performance`
-- `progress`
-- `progressr`
-- `purrr`
-- `qs`
-- `raster`
-- `readr`
-- `rnaturalearth`
-- `rnaturalearthdata`
-- `sandwich`
-- `scales`
-- `sf`
-- `splines`
-- `stringr`
-- `terra`
-- `tibble`
-- `tidyr`
-- `tidyverse`
-- `units`
-- `vcd`
+Main R packages used:
 
-A convenient installation command is:
+```
+broom.mixed
+clubSandwich
+cobalt
+countrycode
+dplyr
+furrr
+future
+future.apply
+ggalluvial
+ggplot2
+ggrepel
+Hmisc
+kableExtra
+knitr
+lme4
+lmerTest
+lwgeom
+mapview
+MASS
+MatchIt
+metafor
+modelsummary
+multcompView
+nngeo
+patchwork
+performance
+progress
+progressr
+purrr
+qs
+raster
+readr
+rnaturalearth
+rnaturalearthdata
+sandwich
+scales
+sf
+stringr
+terra
+tibble
+tidyr
+tidyverse
+units
+vcd
+```
+
+Install using:
 
 ```r
 install.packages(c(
-  "broom.mixed",
-  "clubSandwich",
-  "cobalt",
-  "countrycode",
-  "dplyr",
-  "furrr",
-  "future",
-  "future.apply",
-  "ggalluvial",
-  "ggplot2",
-  "ggrepel",
-  "Hmisc",
-  "kableExtra",
-  "knitr",
-  "lme4",
-  "lmerTest",
-  "lwgeom",
-  "mapview",
-  "MASS",
-  "MatchIt",
-  "metafor",
-  "modelsummary",
-  "multcompView",
-  "nngeo",
-  "patchwork",
-  "performance",
-  "progress",
-  "progressr",
-  "purrr",
-  "qs",
-  "raster",
-  "readr",
-  "rnaturalearth",
-  "rnaturalearthdata",
-  "sandwich",
-  "scales",
-  "sf",
-  "stringr",
-  "terra",
-  "tibble",
-  "tidyr",
-  "tidyverse",
-  "units",
-  "vcd"
+"broom.mixed","clubSandwich","cobalt","countrycode","dplyr","furrr","future",
+"future.apply","ggalluvial","ggplot2","ggrepel","Hmisc","kableExtra","knitr",
+"lme4","lmerTest","lwgeom","mapview","MASS","MatchIt","metafor","modelsummary",
+"multcompView","nngeo","patchwork","performance","progress","progressr",
+"purrr","qs","raster","readr","rnaturalearth","rnaturalearthdata","sandwich",
+"scales","sf","stringr","terra","tibble","tidyr","tidyverse","units","vcd"
 ))
 ```
 
-Notes:
+---
 
-- `parallel`, `grid`, and `splines` are part of base/recommended R and typically do not need separate installation.
-- Some packages may pull in overlapping dependencies, for example `tidyverse` already includes several core tidyverse packages.
-
-## Figures and Outputs
-
-Figures generated by the analysis pipeline are stored in:
-
-```text
-figs/
-```
-
-Supporting tables used in the manuscript and supplementary material include:
-
-```text
-SI1.csv
-SI2.csv
-```
-
-## Reproducing the Analysis
-
-1. Clone the repository.
-2. Download the required raw datasets.
-3. Place them in `RawData/` using the structure above.
-4. Open an R session.
-5. Enter each pipeline folder in the order listed above.
-6. Run the scripts in that folder in filename order.
-
-## License
+# License
 
 This repository is distributed under the license provided in the `LICENSE` file.
