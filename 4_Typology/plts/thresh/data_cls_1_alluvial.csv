@@ -1,0 +1,15 @@
+"class","classF","n"
+"BL","BL",75
+"BL","DA",21
+"DA","BL",9
+"DA","DA",53
+"UB","BL",76
+"UB","DA",37
+"UB","UB",94
+"IU1","BL",26
+"IU1","DA",2
+"IU1","UB",5
+"IU1","IU1",85
+"IU0","BL",5
+"IU0","IU1",10
+"IU0","IU0",70

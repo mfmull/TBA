@@ -1,0 +1,12 @@
+RawData/
+.DS_Store
+# macOS files
+.DS_Store
+__MACOSX/
+
+# R session / temporary files
+.Rhistory
+.RData
+.RDataTmp
+.Rproj.user/
+
