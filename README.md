@@ -31,13 +31,13 @@ RawData
    ▼
 0_PreprocessIGRAC
    ▼
+1_Map
+   ▼
 2_Wells
    ▼
 3_Irrig
    ▼
 4_Typology
-   ▼
-1_Map
    ▼
 Figures
 ```
