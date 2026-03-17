@@ -109,6 +109,7 @@ The following scripts are included in the repository.
 | Script | Description |
 |------|-------------|
 | *`0_Peprocess.R` | Splits IGRAC transboundary aquifers by country boundaries, flags and resolves country-membership discrepancies, and exports cleaned aquifer-country polygons plus supporting SI outputs. |
+| *`OverlapRatios_GEECode.rtf` | Links to GEE codes to carry out overlap analaysis, i.e. to determine the fraction irrigated cropland that covers (i) distinct IGRAC aquifers that overlap spatially and (ii) IGRAC aquifers where the depth to GW is not econmically viable|
 
 ### 1_Map
 
