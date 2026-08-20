@@ -1,0 +1,46 @@
+table,class,level,n
+Cooperation arrangement level,IU0,0,83
+Cooperation arrangement level,IU1,0,100
+Cooperation arrangement level,UB,0,181
+Cooperation arrangement level,DA,0,106
+Cooperation arrangement level,BL,0,37
+Cooperation arrangement level,IU0,1,0
+Cooperation arrangement level,IU1,1,1
+Cooperation arrangement level,UB,1,10
+Cooperation arrangement level,DA,1,0
+Cooperation arrangement level,BL,1,0
+Cooperation arrangement level,IU0,2,2
+Cooperation arrangement level,IU1,2,3
+Cooperation arrangement level,UB,2,8
+Cooperation arrangement level,DA,2,7
+Cooperation arrangement level,BL,2,1
+Cooperation arrangement level,IU0,3,2
+Cooperation arrangement level,IU1,3,7
+Cooperation arrangement level,UB,3,6
+Cooperation arrangement level,DA,3,12
+Cooperation arrangement level,BL,3,2
+Distance class of aquifer extent,IU0,0-10km,46
+Distance class of aquifer extent,IU1,0-10km,45
+Distance class of aquifer extent,UB,0-10km,37
+Distance class of aquifer extent,DA,0-10km,0
+Distance class of aquifer extent,BL,0-10km,12
+Distance class of aquifer extent,IU0,10-100km,28
+Distance class of aquifer extent,IU1,10-100km,39
+Distance class of aquifer extent,UB,10-100km,106
+Distance class of aquifer extent,DA,10-100km,78
+Distance class of aquifer extent,BL,10-100km,27
+Distance class of aquifer extent,IU0,100+km,13
+Distance class of aquifer extent,IU1,100+km,27
+Distance class of aquifer extent,UB,100+km,62
+Distance class of aquifer extent,DA,100+km,47
+Distance class of aquifer extent,BL,100+km,1
+River-defined border,IU0,FALSE,67
+River-defined border,IU1,FALSE,83
+River-defined border,UB,FALSE,86
+River-defined border,DA,FALSE,49
+River-defined border,BL,FALSE,20
+River-defined border,IU0,TRUE,20
+River-defined border,IU1,TRUE,28
+River-defined border,UB,TRUE,119
+River-defined border,DA,TRUE,76
+River-defined border,BL,TRUE,20

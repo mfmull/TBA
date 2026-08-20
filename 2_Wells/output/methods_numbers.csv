@@ -1,0 +1,65 @@
+key,label,value,unit,source_object,manuscript_location,preferred_or_robustness
+nWellsRaw,raw wells in source file,144349,wells,sample_flow,"Methods, sample",preferred
+nWellsCoord,wells with valid coordinates,144349,wells,sample_flow,"Methods, sample",preferred
+nWellsOutcome,wells with valid depletion outcome,144349,wells,sample_flow,"Methods, sample",preferred
+nWellsAssigned,wells with valid aquifer-country assignment,144349,wells,sample_flow,"Methods, sample",preferred
+nWellsFinal,final analysis wells (H1 and H2),116581,wells,sample_flow,"Methods, sample",preferred
+nWellsTB,transboundary wells,6976,wells,segment table,"Methods, sample",preferred
+nWellsCtrl,domestic-control wells,109605,wells,segment table,"Methods, sample",preferred
+nSegments,aquifer-country segments,698,segments,segment table,"Methods, sample",preferred
+nSegmentsTB,transboundary segments,44,segments,segment table,"Methods, sample",preferred
+nSegmentsCtrl,domestic segments,654,segments,segment table,"Methods, sample",preferred
+nAquifers,physical aquifers,694,aquifers,segment table,"Methods, sample",preferred
+nAquifersTB,transboundary physical aquifers,40,aquifers,segment table,"Methods, sample",preferred
+nCountries,countries,19,countries,segment table,"Methods, sample",preferred
+nCountriesOverlap,countries with both treated and control segments,10,countries,overlap_cc,"Methods/SI, identification",preferred
+nWellsOverlapCC,wells in overlap countries,107337,wells,overlap_cc,"SI, identification",preferred
+shareWellsOverlapCC,share of wells in overlap countries,0.921,share,overlap_cc,"SI, identification",preferred
+nWellsUSA,wells in the United States,94934,wells,cc_conc,"SI, concentration",preferred
+shareWellsUSA,share of wells in the United States,0.814,share,cc_conc,"SI, concentration",preferred
+nTBwells10km,TBA wells within 10 km of border,863,wells,well table,"Results, localization",preferred
+shareTBwells10km,share of TBA wells within 10 km,0.124,share,well table,"Results, localization",preferred
+nTBseg10km,TBA segments with wells within 10 km,41,segments,segment table,"Results, localization",preferred
+shareTBseg10km,share of TBA segments with wells within 10 km,0.932,share,segment table,"Results, localization",preferred
+nTBwells50km,TBA wells within 50 km of border,3160,wells,well table,"Results, localization",preferred
+shareTBwells50km,share of TBA wells within 50 km,0.453,share,well table,"Results, localization",preferred
+nTBseg50km,TBA segments with wells within 50 km,43,segments,segment table,"Results, localization",preferred
+shareTBseg50km,share of TBA segments with wells within 50 km,0.977,share,segment table,"Results, localization",preferred
+nTBwells100km,TBA wells within 100 km of border,4069,wells,well table,"Results, localization",preferred
+shareTBwells100km,share of TBA wells within 100 km,0.583,share,well table,"Results, localization",preferred
+nTBseg100km,TBA segments with wells within 100 km,44,segments,segment table,"Results, localization",preferred
+shareTBseg100km,share of TBA segments with wells within 100 km,1,share,segment table,"Results, localization",preferred
+medianWellsPerSeg,median wells per segment,50,wells,segment table,"Methods, sample",preferred
+iqrWellsPerSegLo,"wells per segment, 25th pct",30,wells,segment table,"Methods, sample",preferred
+iqrWellsPerSegHi,"wells per segment, 75th pct",112,wells,segment table,"Methods, sample",preferred
+minWellsThreshold,minimum wells per segment,20,wells,CFG,"Methods, sample",preferred
+essControlATO,effective control sample (ATO),480.4,segments,balance_summary,"Methods, design",preferred
+essTreatedATO,effective treated sample (ATO),43.8,segments,balance_summary,"Methods, design",preferred
+matchingEstimand,matching estimand,NA,ATO,CFG,"Methods, design",preferred
+maxSMDATO,max |SMD| under overlap weights,2.5e-14,SMD,balance_summary,"Methods, design",preferred
+maxSMDunweighted,max |SMD| unweighted,0.31,SMD,balance_summary,"Methods, design",preferred
+nCountryClusters,country clusters for inference,19,clusters,segment table,"Methods, inference",preferred
+nWCB,wild cluster bootstrap repetitions,999,reps,CFG,"Methods, inference",preferred
+nProfileBoot,country bootstrap repetitions (profiles),999,reps,CFG,"Methods, inference",preferred
+nH3Boot,H3 rank-stability bootstrap repetitions,200,reps,CFG,"SI, H3",preferred
+conleyCutoff,Conley cutoff,10,km,CFG,"Methods, first stage",preferred
+firstStageEstimator,first-stage estimator,NA,segment mean depletion (HC3) and Fisher z of depletion-distance correlation,CFG,"Methods, first stage",preferred
+secondStageEstimator,second-stage estimator,NA,"weighted mixed-effects meta-regression (rma.mv, REML), random = country + segment",CFG,"Methods, second stage",preferred
+weightDefinition,second-stage weight,NA,"w_ATO / (sampling variance + tau2), winsorised",CFG,"Methods, second stage",preferred
+tauH1,"between-segment SD, H1 (level)",365.2,mm/yr,pref,"Results, H3",preferred
+tauH2,"between-segment SD, H2 (gradient)",0.234,Fisher z,pref,"Results, H3",preferred
+H1estimate,H1 preferred estimate,-138.7,mm/yr,pref,"Results, H1",preferred
+H1ciLow,H1 90% CI lower,-505.6,mm/yr,pref,"Results, H1",preferred
+H1ciHigh,H1 90% CI upper,228.1,mm/yr,pref,"Results, H1",preferred
+H1pOneSided,H1 one-sided p (predicted direction),0.897,p,pref,"Results, H1",preferred
+H1mde80,H1 80%-power MDE (one-sided alpha 0.05),335,mm/yr,pref,"Results, H1 detection limit",preferred
+H1mde90,H1 90%-power MDE (one-sided alpha 0.05),394,mm/yr,pref,"SI, H1 detection limit",preferred
+H1mdeSource,MDE uncertainty source,NA,CR2 country-clustered SE,pref,"Methods, inference",preferred
+H2estimate,H2 preferred estimate,-0.079,Fisher z,pref,"Results, H2",preferred
+H2ciLow,H2 90% CI lower,-0.16,Fisher z,pref,"Results, H2",preferred
+H2ciHigh,H2 90% CI upper,0.0021,Fisher z,pref,"Results, H2",preferred
+H2pOneSided,H2 one-sided p (predicted direction),0.045,p,pref,"Results, H2",preferred
+H2placebo,H2 intercept (placebo-type diagnostic),-0.0034,Fisher z,pref,"Results, H2",preferred
+H2placeboP,H2 placebo two-sided p,0.746,p,pref,"Results, H2",preferred
+nH3Segments,H3 transboundary segments,44,segments,h3,"Results, H3",preferred
+nSelectedAquifers,aquifers selected by the coded rule,8,segments,ident,"Results, H3",preferred

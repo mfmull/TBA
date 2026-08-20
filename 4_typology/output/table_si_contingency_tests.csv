@@ -1,0 +1,7 @@
+table,statistic,p_value,method,cells_expected_lt5,n_cells,note
+Cooperation arrangement level,26.044797414993944,0.013598640135986401,"Pearson's Chi-squared test with simulated p-value
+	 (based on 10000 replicates)",11,20,11 of 20 cells have expected count < 5
+Distance class of aquifer extent,111.71019187585112,9.999000099990002e-5,"Pearson's Chi-squared test with simulated p-value
+	 (based on 10000 replicates)",0,15,no sparse cells
+River-defined border,61.01522901010958,9.999000099990002e-5,"Pearson's Chi-squared test with simulated p-value
+	 (based on 10000 replicates)",0,10,no sparse cells

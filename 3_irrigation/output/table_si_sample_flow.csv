@@ -1,0 +1,6 @@
+"step","treated","controls"
+"Master table (_dataMain.csv)",929,6304
+"Irrigated (Ir > 0): intensity + Ir Gini",562,3320
+"GW-irrigated (GW > 0): GW Gini",159,1045
+"Ir > 0, not near river border (excl. robustness)",148,3088
+"GW > 0, not near river border (excl. robustness)",59,1010

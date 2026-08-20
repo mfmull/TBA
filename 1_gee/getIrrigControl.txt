@@ -1,0 +1,528 @@
+var CropSuitability = ee.Image("projects/globaltbav2/assets/IrrigationProjections/CropSuitabilityRainfedGAEZv4"),
+    RoadsTot = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadTotalGRIP"),
+    RoadsHiWay = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadHighwayGRIP"),
+    RoadsPrinc = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadPrincipalGRIP"),
+    SoilTerrainSuitabHiRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilTerrainSuitability_Hi_Rain"),
+    SoilTerrainSuitabLoRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilTerrainSuitability_Lo_Rain"),
+    crp = ee.Image("projects/globaltbav2/assets/IrrigationProjections/Crop1k_0307"),
+    urb = ee.ImageCollection("JRC/GHSL/P2023A/GHS_SMOD"),
+    Irr1k = ee.Image("projects/globaltbav2/assets/IrrigationProjections/MaierIrrigatedArea"),
+    GWf = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWf"),
+    bas = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_controlBas2025"),
+    aqf = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_TBA_Split_2025"),
+    LB = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_LandBorders_2025"),
+    BWS = ee.Image("projects/globaltbav2/assets/IrrigationProjections/BWS_Rosa2020"),
+    GWS = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWS_Rosa2020");
+
+// ============================================================================
+// GEE: Aquifer/Basin polygon summaries
+// Switch to basins by uncommenting: aqf = bas;
+// ============================================================================
+
+ aqf = bas;   // <- use control basins instead of IGRAC aquifers (controls must be created from
+              //                  HydroSHEDS with the dedicated R script)
+
+// ============================================================
+// PREAMBLE
+// ============================================================
+// This Earth Engine script computes polygon-level predictors and outcomes for a set of
+// vector features (either aquifers `aqf` or control basins `bas`) and exports the results
+// as CSV tables to Google Drive.
+//
+// Core steps:
+//
+// 1) Geometry attributes (vector-only):
+//    - Ensures the FeatureCollection has a consistent schema by prepending a “dummy” feature
+//      with placeholder values for all existing properties (useful when some features have
+//      missing properties that would otherwise break exports).
+//    - For each polygon, computes:
+//        * area_km2  : polygon area in km²
+//        * lat_c/lon_c: centroid coordinates (WGS84)
+//
+// 2) Raster-based covariates (mean within polygon at ~1 km):
+//    Builds a multi-band image of covariates and reduces it over polygons using mean(), including:
+//      - Climate: TerraClimate precipitation (prec_mm) and potential ET (pet_mm), averaged over 2010–2020.
+//      - Land cover / use: cropland fraction (crpkHaKm2), urban area (urbkHaKm2),
+//        and groundwater irrigation mask (GWIrKHaKm2).
+//      - Accessibility: roads (RDS_main, RDS_tot) and distance-to-roads (RDS_mainDist).
+//      - Suitability: soil/terrain suitability (STS) and maximum crop suitability (CS_max).
+//    Exports: `covariatesVct` (one row per polygon, covariate means + geometry attributes).
+//
+// 3) Mean “outcome” layers (mean within polygon at ~1 km):
+//    Computes polygon-mean summaries for irrigation and (un)sustainability indicators,
+//    combining irrigation masks with cropland and water stress thresholds (0/3/6), e.g.:
+//      - Ir, GW (irrigation and groundwater irrigation intensity over cropland)
+//      - IrNeedX (cropland under groundwater stress ≥ X)
+//      - OverGWX / OverIRX (groundwater/irrigation over cropland under blue-water stress ≥ X)
+//    Exports: `outVct` (one row per polygon, mean outcomes).
+//
+// 4) Spatial distribution vs distance to land borders:
+//    Creates a distance-to-border raster (km) from the land border layer `LB`, then for each polygon
+//    exports distance percentiles (0–100 by 10) for:
+//      - all land pixels (landpct)
+//      - irrigated pixels (irpct)
+//      - groundwater-irrigated pixels (gwpct)
+//      - cropland pixels (crppct)
+//      - road pixels (rdspct)
+//      - subsets under blue-water stress or groundwater stress (irBWSpct, GWBWSpct, crpGWSpct)
+//    These describe where (in terms of border distance) each activity is concentrated.
+//
+//
+// Notes:
+//  - All reductions use a harmonized ~1 km scale and a fixed geographic projection for consistency.
+//  - Switch the analysis target by setting `aqf` equal to your desired FeatureCollection
+//    (aquifers vs control basins) before running exports.
+// ============================================================
+
+
+// ---------------------------------------------------------------------------
+// 0) Stabilize schema with a dummy feature (prevents missing columns on export)
+// ---------------------------------------------------------------------------
+var propNames = ee.Feature(aqf.first()).propertyNames();
+
+var placeholders = ee.Dictionary.fromLists(
+  propNames,
+  ee.List.repeat('NA', propNames.size())
+);
+
+var dummy = ee.Feature(
+  ee.Geometry.Point([79.6193599525097, 27.809185322258134]).buffer(10000),
+  placeholders.set('dummy', 1)
+);
+
+// Merge dummy into aqf so exports always include all properties
+aqf = ee.FeatureCollection([dummy]).merge(aqf);
+
+// ============================================================================
+// 1) GEOMETRY PREDICTORS (area + centroid)
+// ============================================================================
+var addGeom = function(f) {
+  var g = f.geometry();
+  var area_km2 = g.area(1).divide(1e6); // km^2
+
+  var centroid = g.centroid(1).coordinates();
+  var lon_c = ee.Number(centroid.get(0));
+  var lat_c = ee.Number(centroid.get(1));
+
+  return f.set({
+    area_km2: area_km2,
+    lat_c: lat_c,
+    lon_c: lon_c
+  });
+};
+
+var aqf_geom = aqf.map(addGeom);
+
+// ============================================================================
+// 2) RASTER-BASED PREDICTORS (climate, land cover, suitability, roads)
+// ============================================================================
+var baseProj = ee.Projection('EPSG:4326').atScale(1000); // harmonized 1 km grid
+
+// ---- Climate (TerraClimate means over 2010–2020) ----
+var TERRACLIM = ee.ImageCollection('IDAHO_EPSCOR/TERRACLIMATE')
+  .filterDate('2010-01-01', '2020-12-31');
+
+var PET = TERRACLIM.select('pet').mean(); // mm/yr
+var PRE = TERRACLIM.select('pr').mean();  // mm/yr
+
+// ---- Land cover / irrigation ----
+// Requires upstream images: crp, urb, Irr1k, GWf
+crp = crp.multiply(10); // fraction cropped (scaled to your convention)
+
+var Urb = ee.Image(urb.filter(ee.Filter.calendarRange(2005, 2005, 'year')).first())
+  .gt(20)
+  .multiply(ee.Image.pixelArea())
+  .divide(1e7); // kHa/km^2 (check scaling if needed)
+
+var GW = Irr1k.gt(0).multiply(GWf).gt(0.5); // binary GW irrigation mask
+var Ir = Irr1k.gt(0);                       // irrigation layer
+
+// ---- Suitability ----
+// Requires upstream images: SoilTerrainSuitabHiRainfed, SoilTerrainSuitabLoRainfed, CropSuitability
+var STS    = SoilTerrainSuitabHiRainfed.add(SoilTerrainSuitabLoRainfed).divide(2);
+var CS_max = CropSuitability.reduce(ee.Reducer.max());
+
+
+// ---- Roads + border distance ----
+// Requires upstream: RoadsHiWay, RoadsPrinc, RoadsTot, LB
+var RDS_main = RoadsHiWay.add(RoadsPrinc);
+var RDS_tot  = RoadsTot;
+
+// Distance to nearest land border (km)
+var dist_km = LB.distance(3e6).divide(1000);
+
+// Distance to nearest road pixel (km)
+var RDS_mainDist = RDS_tot.gt(0)
+  .selfMask()
+  .reproject(baseProj)
+  .fastDistanceTransform(512)
+  .sqrt()
+  .multiply(RDS_main.projection().nominalScale())
+  .divide(1000)
+  .rename('RDS_mainDist');
+
+// ============================================================================
+// 3) COVARIATE STACK + EXPORT (polygon means)
+// ============================================================================
+var covariates = ee.Image(1)
+  .addBands(PET.reproject(baseProj).rename('pet_mm'))
+  .addBands(PRE.reproject(baseProj).rename('prec_mm'))
+  .addBands(crp.reproject(baseProj).rename('crpkHaKm2'))
+  .addBands(Urb.reproject(baseProj).rename('urbkHaKm2'))
+  .addBands(GW.reproject(baseProj).rename('GWIrKHaKm2'))
+  .addBands(RDS_main.reproject(baseProj).rename('RDS_main'))
+  .addBands(RDS_tot.reproject(baseProj).rename('RDS_tot'))
+  .addBands(RDS_mainDist.reproject(baseProj).rename('RDS_mainDist'))
+  .addBands(STS.reproject(baseProj).rename('STS'))
+  .addBands(CS_max.reproject(baseProj).rename('CS_max'));
+
+
+var covariatesVct = covariates.reduceRegions({
+  collection: aqf_geom,
+  reducer: ee.Reducer.mean(),
+  scale: 1000,
+  tileScale: 4
+}).map(function(f) {
+  return ee.Feature(null, f.toDictionary());
+});
+
+Export.table.toDrive({
+  collection: covariatesVct,
+  description: 'covariatesVct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'covariatesVct_B',
+  fileFormat: 'csv'
+});
+
+// ============================================================================
+// 4) OUTCOME MEANS (stress overlays) + EXPORT
+// ============================================================================
+var IrNeed3 = GWS.unmask().gte(3).multiply(crp).rename('IrNeed3');
+var OverGW3 = BWS.unmask().gte(3).multiply(GW).multiply(crp).rename('OverGW3');
+var OverIR3 = BWS.unmask().gte(3).multiply(Ir).multiply(crp).rename('OverIR3');
+
+var IrNeed0 = GWS.unmask().gte(0).multiply(crp).rename('IrNeed0');
+var OverGW0 = BWS.unmask().gte(0).multiply(GW).multiply(crp).rename('OverGW0');
+var OverIR0 = BWS.unmask().gte(0).multiply(Ir).multiply(crp).rename('OverIR0');
+
+var IrNeed6 = GWS.unmask().gte(6).multiply(crp).rename('IrNeed6');
+var OverGW6 = BWS.unmask().gte(6).multiply(GW).multiply(crp).rename('OverGW6');
+var OverIR6 = BWS.unmask().gte(6).multiply(Ir).multiply(crp).rename('OverIR6');
+
+var outcome = crp.rename('crp')
+  .addBands(Ir.multiply(crp).rename('Ir'))
+  .addBands(GW.multiply(crp).rename('GW'))
+  .addBands(IrNeed3).addBands(OverGW3).addBands(OverIR3)
+  .addBands(IrNeed0).addBands(OverGW0).addBands(OverIR0)
+  .addBands(IrNeed6).addBands(OverGW6).addBands(OverIR6);
+
+var outVct = outcome.reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.mean(),
+  scale: 1000
+}).map(function(f) {
+  return ee.Feature(null, f.toDictionary());
+});
+
+Export.table.toDrive({
+  collection: outVct,
+  description: 'outVct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'outVct_B',
+  fileFormat: 'csv'
+});
+
+// ============================================================================
+// 5) VARIABILITY: distance-to-border percentiles for different masks
+// ============================================================================
+var percentiles = ee.List.sequence(0, 100, 10);
+
+// Land (all pixels)
+var landpct = dist_km.reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: landpct,
+  description: 'landpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'landpct_B',
+  fileFormat: 'csv'
+});
+
+// Irrigation
+var irpct = dist_km.updateMask(Ir).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: irpct,
+  description: 'irpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'irpct_B',
+  fileFormat: 'csv'
+});
+
+// Groundwater irrigation
+var gwpct = dist_km.updateMask(GW).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: gwpct,
+  description: 'gwpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'gwpct_B',
+  fileFormat: 'csv'
+});
+
+// Cropland
+var crppct = dist_km.updateMask(crp.gt(0.5)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: crppct,
+  description: 'crppct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'crppct_B',
+  fileFormat: 'csv'
+});
+
+// Roads (main)
+var rdspct = dist_km.updateMask(covariates.select('RDS_main').gt(0)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: rdspct,
+  description: 'rdspct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'rdspct_B',
+  fileFormat: 'csv'
+});
+
+// Irrigation in stressed BWS>=3 areas
+var irBWSpct = dist_km.updateMask(BWS.gte(3).multiply(Ir)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: irBWSpct,
+  description: 'irBWSpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'irBWSpct_B',
+  fileFormat: 'csv'
+});
+
+// GW irrigation in stressed BWS>=3 areas
+var GWBWSpct = dist_km.updateMask(BWS.gte(3).multiply(GW)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: GWBWSpct,
+  description: 'GWBWSpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'GWBWSpct_B',
+  fileFormat: 'csv'
+});
+
+// Cropland in stressed GWS>=3 areas
+var crpGWSpct = dist_km.updateMask(GWS.gte(3).multiply(crp.gt(0.5))).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: crpGWSpct,
+  description: 'crpGWSpct_cGT0_B',
+  folder: 'TBA2',
+  fileNamePrefix:'crpGWSpctcGT0_B',
+  fileFormat: 'csv'
+}); 
+
+
+
+// ============================================================================
+// 6) CSI-BASED CROPLAND PREDICTION (fixes variable shadowing)
+// ============================================================================
+var aqf_simple = aqf.map(function(f) { return f.simplify(2000); });
+var crp_bin    = crp.gt(0.5).rename('crp_bin');
+
+// Keep polygons where cropland exists but is not everywhere
+var aqf_mix = crp_bin.reduceRegions({
+  reducer: ee.Reducer.minMax(),
+  collection: aqf_simple,
+  scale: 1000
+}).filter(ee.Filter.and(ee.Filter.eq('max', 1), ee.Filter.eq('min', 0)));
+
+// Also require CS_max coverage
+aqf_mix = covariates.select('CS_max').reduceRegions({
+  reducer: ee.Reducer.count(),
+  collection: aqf_mix,
+  scale: 10000
+}).filter(ee.Filter.gt('count', 0));
+
+// Polygon-specific threshold table
+var thrTbl = aqf_mix.map(function(f) {
+  var geom = f.geometry().buffer(10000);
+
+  var grouped = covariates.select('CS_max')
+    .addBands(crp_bin.rename('crp'))
+    .reduceRegion({
+      reducer: ee.Reducer.mean().group({ groupField: 1, groupName: 'crp' }),
+      geometry: geom,
+      scale: 1000,
+      maxPixels: 1e9,
+      tileScale: 6
+    })
+    .get('groups');
+
+  var csMeans = ee.List(grouped).map(function(d) {
+    return ee.Dictionary(d).getNumber('mean');
+  });
+
+  var thr = ee.Number(csMeans.reduce(ee.Reducer.mean())); // average of cropland/noncropland means
+  return f.set('thr', thr);
+});
+
+var thrImg = thrTbl.reduceToImage({
+  properties: ['thr'],
+  reducer: ee.Reducer.first()
+});
+
+var crp_pred = covariates.select('CS_max').gte(thrImg).rename('crp_pred');
+
+var crpCSIpct = dist_km.updateMask(crp_pred).reduceRegions({
+  collection: thrTbl,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000,
+  tileScale: 8
+});
+
+Export.table.toDrive({
+  collection: crpCSIpct,
+  description: 'crpCSIpct_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'crpCSIpct_B',
+  fileFormat: 'CSV'
+});
+
+// ============================================================================
+// 7) ROBUSTNESS EXPORTS (threshold variants)
+// ============================================================================
+var gwpct_gt0 = dist_km.updateMask(Irr1k.multiply(GWf).gt(0)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: gwpct_gt0,
+  description: 'gwpct_gt0_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'gwpct_gt0_B',
+  fileFormat: 'csv'
+});
+
+var crppct_gt0 = dist_km.updateMask(crp.gt(0)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: crppct_gt0,
+  description: 'crppct_gt0_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'crppct_gt0_B',
+  fileFormat: 'csv'
+});
+
+var irBWSpct_gt0 = dist_km.updateMask(BWS.gte(0).multiply(Ir)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: irBWSpct_gt0,
+  description: 'irBWSpct_gt0_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'irBWSpct_gt0_B',
+  fileFormat: 'csv'
+});
+
+var irBWSpct_gt6 = dist_km.updateMask(BWS.gte(6).multiply(Ir)).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: irBWSpct_gt6,
+  description: 'irBWSpct_gt6_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'irBWSpct_gt6_B',
+  fileFormat: 'csv'
+});
+
+var crpGWSpct_cGT0 = dist_km.updateMask(GWS.gte(3).multiply(crp.gt(0))).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: crpGWSpct_cGT0,
+  description: 'crpGWSpctcGT0_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'crpGWSpctcGT0_B',
+  fileFormat: 'csv'
+});
+
+var crpGWSpct_GWS_GT0 = dist_km.updateMask(GWS.gte(0).multiply(crp.gt(0.5))).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+
+Export.table.toDrive({
+  collection: crpGWSpct_GWS_GT0,
+  description: 'crpGWSpct_GWS_GT0_B',
+  folder: 'TBA2',
+  fileNamePrefix:'crpGWSpctc_GWS_GT0_B',
+  fileFormat: 'csv'
+}); 
+
+
+var crpGWSpct_GWS_GT6 = dist_km.updateMask(GWS.gte(6).multiply(crp.gt(0.5))).reduceRegions({
+  collection: aqf,
+  reducer: ee.Reducer.percentile(percentiles),
+  scale: 1000
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: crpGWSpct_GWS_GT6,
+  description: 'crpGWSpct_GWS_GT6_B',
+  folder: 'TBA2',
+  fileNamePrefix: 'crpGWSpct_GWS_GT6_B',
+  fileFormat: 'csv'
+});

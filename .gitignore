@@ -1,12 +1,19 @@
-RawData/
-.DS_Store
-# macOS files
-.DS_Store
-__MACOSX/
+# Third-party raw inputs are not redistributed (see the data table in README.md)
+2_wells/1_data/wellsData.csv
+2_wells/1_data/wells_points.csv
+2_wells/1_data/wtd_by_well.csv
+2_wells/1_data/fan_wtd/
+2_wells/1_data/river_crossings_raw/
+2_wells/map/
+3_irrigation/1_data/
+4_typology/1_data/
+*/derived/
+2_wells/gee/
+3_irrigation/gee/
 
-# R session / temporary files
+# Run artefacts
+*/output/*.pdf
 .Rhistory
 .RData
-.RDataTmp
 .Rproj.user/
-
+.DS_Store

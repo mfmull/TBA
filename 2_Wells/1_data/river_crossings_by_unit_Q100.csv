@@ -1,0 +1,199 @@
+"unit_id","Aquifer","shapeGroup","q_min_cms","has_crossing_river","n_crossing_rivers","n_meander_rivers","max_q_crossing_cms","side","min_depth_km","n_border_points","n_reaches_window"
+"Abbotsford-Sumas Aquifer_CAN","Abbotsford-Sumas Aquifer","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Abbotsford-Sumas Aquifer_USA","Abbotsford-Sumas Aquifer","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Alsatian Aquifer and Upper Rhine Valley_CHE","Alsatian Aquifer and Upper Rhine Valley","CHE",100,FALSE,0,0,NA,NA,NA,NA,77
+"Alsatian Aquifer and Upper Rhine Valley_DEU","Alsatian Aquifer and Upper Rhine Valley","DEU",100,FALSE,0,1,NA,NA,NA,NA,77
+"Alsatian Aquifer and Upper Rhine Valley_FRA","Alsatian Aquifer and Upper Rhine Valley","FRA",100,FALSE,0,1,NA,NA,NA,NA,77
+"Avra Valley_MEX","Avra Valley","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Avra Valley_USA","Avra Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Bajo Rio Bravo_MEX","Bajo Rio Bravo","MEX",100,FALSE,0,2,NA,NA,NA,NA,44
+"Bajo Rio Bravo_USA","Bajo Rio Bravo","USA",100,FALSE,0,2,NA,NA,NA,NA,44
+"Bari Doab_IND","Bari Doab","IND",100,TRUE,1,0,2946.65981188361,"upstream",62.2490122174244,19,402
+"Bari Doab_PAK","Bari Doab","PAK",100,TRUE,1,0,2946.65981188361,"downstream",60.8726864328045,22,402
+"Barind Tract and Central Floodplains_BGD","Barind Tract and Central Floodplains","BGD",100,TRUE,1,0,34830.5233461089,"downstream",44.8991163522721,17,368
+"Barind Tract and Central Floodplains_IND","Barind Tract and Central Floodplains","IND",100,TRUE,1,0,34830.5233461089,"upstream",44.5040707316449,17,368
+"Central Karoo Basin_LSO","Central Karoo Basin","LSO",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Karoo Basin_ZAF","Central Karoo Basin","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Maputaland Coastal Plain_MOZ","Central Maputaland Coastal Plain","MOZ",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Maputaland Coastal Plain_SWZ","Central Maputaland Coastal Plain","SWZ",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Maputaland Coastal Plain_ZAF","Central Maputaland Coastal Plain","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Parana Basin and Torres Syncline_ARG","Central Parana Basin and Torres Syncline","ARG",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Parana Basin and Torres Syncline_BRA","Central Parana Basin and Torres Syncline","BRA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Parana Basin and Torres Syncline_PRY","Central Parana Basin and Torres Syncline","PRY",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Vienna Basin_AUT","Central Vienna Basin","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Central Vienna Basin_SVK","Central Vienna Basin","SVK",100,FALSE,0,0,NA,NA,NA,NA,0
+"Chaj Doab_IND","Chaj Doab","IND",100,FALSE,0,0,NA,NA,NA,NA,169
+"Chaj Doab_PAK","Chaj Doab","PAK",100,FALSE,0,0,NA,NA,NA,NA,169
+"Cheb Basin_CZE","Cheb Basin","CZE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Cheb Basin_DEU","Cheb Basin","DEU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Chittagong Coast Aquifer_BGD","Chittagong Coast Aquifer","BGD",100,FALSE,0,0,NA,NA,NA,NA,9
+"Chittagong Coast Aquifer_MMR","Chittagong Coast Aquifer","MMR",100,FALSE,0,0,NA,NA,NA,NA,9
+"Coastal Aquifer_118","Coastal Aquifer","118",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Aquifer_124","Coastal Aquifer","124",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Aquifer_129","Coastal Aquifer","129",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Aquifer_EGY","Coastal Aquifer","EGY",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Aquifer_ISR","Coastal Aquifer","ISR",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Maine Crystalline Aquifers_CAN","Coastal Maine Crystalline Aquifers","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Coastal Maine Crystalline Aquifers_USA","Coastal Maine Crystalline Aquifers","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Devonian and Overlying Unconsolidated Aquifers_CAN","Devonian and Overlying Unconsolidated Aquifers","CAN",100,FALSE,0,1,NA,NA,NA,NA,17
+"Devonian and Overlying Unconsolidated Aquifers_USA","Devonian and Overlying Unconsolidated Aquifers","USA",100,FALSE,0,1,NA,NA,NA,NA,17
+"Dublin Basin_GBR","Dublin Basin","GBR",100,FALSE,0,0,NA,NA,NA,NA,0
+"Dublin Basin_IRL","Dublin Basin","IRL",100,FALSE,0,0,NA,NA,NA,NA,0
+"Eastern Champlain Valley Lowlands_CAN","Eastern Champlain Valley Lowlands","CAN",100,FALSE,0,0,NA,NA,NA,NA,10
+"Eastern Champlain Valley Lowlands_USA","Eastern Champlain Valley Lowlands","USA",100,FALSE,0,0,NA,NA,NA,NA,10
+"Eastern Imperial and Amos and Oligby Valleys_MEX","Eastern Imperial and Amos and Oligby Valleys","MEX",100,FALSE,0,0,NA,NA,NA,NA,5
+"Eastern Imperial and Amos and Oligby Valleys_USA","Eastern Imperial and Amos and Oligby Valleys","USA",100,FALSE,0,0,NA,NA,NA,NA,5
+"Eastern Isonzo-Soca High Plain_ITA","Eastern Isonzo-Soca High Plain","ITA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Eastern Isonzo-Soca High Plain_SVN","Eastern Isonzo-Soca High Plain","SVN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Eastern Mekong Delta_KHM","Eastern Mekong Delta","KHM",100,TRUE,1,0,15252.1125006513,"upstream",32.5319360284528,1,342
+"Eastern Mekong Delta_VNM","Eastern Mekong Delta","VNM",100,TRUE,1,0,15252.1125006513,"downstream",32.5319360284528,1,342
+"Eastside Lower Indus Valley_IND","Eastside Lower Indus Valley","IND",100,FALSE,0,0,NA,NA,NA,NA,26
+"Eastside Lower Indus Valley_PAK","Eastside Lower Indus Valley","PAK",100,FALSE,0,0,NA,NA,NA,NA,26
+"Eastside Middle Indus Plain_IND","Eastside Middle Indus Plain","IND",100,TRUE,1,1,523.022051683152,"upstream",72.6962975681328,1,302
+"Eastside Middle Indus Plain_PAK","Eastside Middle Indus Plain","PAK",100,TRUE,1,1,523.022051683152,"downstream",72.6962975681328,1,302
+"Edwards Plateau_MEX","Edwards Plateau","MEX",100,FALSE,0,1,NA,NA,NA,NA,23
+"Edwards Plateau_USA","Edwards Plateau","USA",100,FALSE,0,1,NA,NA,NA,NA,23
+"Essex Clay Plain_CAN","Essex Clay Plain","CAN",100,FALSE,0,0,NA,NA,NA,NA,1
+"Essex Clay Plain_USA","Essex Clay Plain","USA",100,FALSE,0,0,NA,NA,NA,NA,1
+"Grand Forks Aquifer_CAN","Grand Forks Aquifer","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Grand Forks Aquifer_USA","Grand Forks Aquifer","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Jacumba Valley_MEX","Jacumba Valley","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Jacumba Valley_USA","Jacumba Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Kootenai Valley_CAN","Kootenai Valley","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Kootenai Valley_USA","Kootenai Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"La Yarada Aquifer_CHL","La Yarada Aquifer","CHL",100,FALSE,0,0,NA,NA,NA,NA,0
+"La Yarada Aquifer_PER","La Yarada Aquifer","PER",100,FALSE,0,0,NA,NA,NA,NA,0
+"Letaba Lowveld_MOZ","Letaba Lowveld","MOZ",100,FALSE,0,0,NA,NA,NA,NA,0
+"Letaba Lowveld_ZAF","Letaba Lowveld","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lom- Pleven Depression_BGR","Lom- Pleven Depression","BGR",100,FALSE,0,1,NA,NA,NA,NA,62
+"Lom- Pleven Depression_ROU","Lom- Pleven Depression","ROU",100,FALSE,0,1,NA,NA,NA,NA,62
+"Lom- Pleven Depression_SRB","Lom- Pleven Depression","SRB",100,FALSE,0,0,NA,NA,NA,NA,62
+"Lower Fraser Valley_CAN","Lower Fraser Valley","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Fraser Valley_USA","Lower Fraser Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Morovian Basin_AUT","Lower Morovian Basin","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Morovian Basin_CZE","Lower Morovian Basin","CZE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Morovian Basin_SVK","Lower Morovian Basin","SVK",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Mur Valley_AUT","Lower Mur Valley","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Mur Valley_SVN","Lower Mur Valley","SVN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Rio Paz Aquifer_GTM","Lower Rio Paz Aquifer","GTM",100,FALSE,0,0,NA,NA,NA,NA,0
+"Lower Rio Paz Aquifer_SLV","Lower Rio Paz Aquifer","SLV",100,FALSE,0,0,NA,NA,NA,NA,0
+"Madhupur Tract and Eastern Floodplains_BGD","Madhupur Tract and Eastern Floodplains","BGD",100,FALSE,0,0,NA,NA,NA,NA,339
+"Madhupur Tract and Eastern Floodplains_IND","Madhupur Tract and Eastern Floodplains","IND",100,FALSE,0,0,NA,NA,NA,NA,339
+"Malm Valangnian Aquifer_BGR","Malm Valangnian Aquifer","BGR",100,FALSE,0,0,NA,NA,NA,NA,0
+"Malm Valangnian Aquifer_ROU","Malm Valangnian Aquifer","ROU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mesilla-Conejos-Medanos Basin_MEX","Mesilla-Conejos-Medanos Basin","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mesilla-Conejos-Medanos Basin_USA","Mesilla-Conejos-Medanos Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mexicali Valley_MEX","Mexicali Valley","MEX",100,FALSE,0,0,NA,NA,NA,NA,9
+"Mexicali Valley_USA","Mexicali Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,9
+"Middle Gangetic Plain_IND","Middle Gangetic Plain","IND",100,TRUE,1,0,12822.4200545689,"downstream",29.571986933315,10,883
+"Middle Gangetic Plain_NPL","Middle Gangetic Plain","NPL",100,TRUE,1,0,12822.4200545689,"upstream",28.8535932955004,10,883
+"Middle-Upper Devonian Aquifer System_BLR","Middle-Upper Devonian Aquifer System","BLR",100,FALSE,0,0,NA,NA,NA,NA,0
+"Middle-Upper Devonian Aquifer System_LTU","Middle-Upper Devonian Aquifer System","LTU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Middle-Upper Devonian Aquifer System_LVA","Middle-Upper Devonian Aquifer System","LVA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Milk River_CAN","Milk River","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Milk River_USA","Milk River","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mimbres Basin_MEX","Mimbres Basin","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mimbres Basin_USA","Mimbres Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mioplioquatenario de Elvas-Campo Maior and Vegas Baja Aquifers_ESP","Mioplioquatenario de Elvas-Campo Maior and Vegas Baja Aquifers","ESP",100,FALSE,0,1,NA,NA,NA,NA,15
+"Mioplioquatenario de Elvas-Campo Maior and Vegas Baja Aquifers_PRT","Mioplioquatenario de Elvas-Campo Maior and Vegas Baja Aquifers","PRT",100,FALSE,0,1,NA,NA,NA,NA,15
+"Mons Sedimentary Basin_BEL","Mons Sedimentary Basin","BEL",100,FALSE,0,0,NA,NA,NA,NA,0
+"Mons Sedimentary Basin_FRA","Mons Sedimentary Basin","FRA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Niagara Peninsula_CAN","Niagara Peninsula","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Niagara Peninsula_USA","Niagara Peninsula","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northcentral Mega Aquifer System_IRQ","Northcentral Mega Aquifer System","IRQ",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northcentral Mega Aquifer System_KWT","Northcentral Mega Aquifer System","KWT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northcentral Mega Aquifer System_SAU","Northcentral Mega Aquifer System","SAU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northern Mega Aquifer System_IRQ","Northern Mega Aquifer System","IRQ",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northern Mega Aquifer System_SAU","Northern Mega Aquifer System","SAU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northern Piedmont and Tista Fan_BGD","Northern Piedmont and Tista Fan","BGD",100,TRUE,1,0,21233.4224327264,"downstream",46.7491763569159,21,421
+"Northern Piedmont and Tista Fan_BTN","Northern Piedmont and Tista Fan","BTN",100,FALSE,0,0,NA,NA,NA,NA,421
+"Northern Piedmont and Tista Fan_IND","Northern Piedmont and Tista Fan","IND",100,TRUE,1,0,21233.4224327264,"upstream",46.7491763569159,21,421
+"Northern Piedmont and Tista Fan_NPL","Northern Piedmont and Tista Fan","NPL",100,FALSE,0,0,NA,NA,NA,NA,421
+"Northern Vienna Basin_AUT","Northern Vienna Basin","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northern Vienna Basin_CZE","Northern Vienna Basin","CZE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Northern Vienna Basin_SVK","Northern Vienna Basin","SVK",100,FALSE,0,0,NA,NA,NA,NA,0
+"Osoyoos Aquifer_CAN","Osoyoos Aquifer","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Osoyoos Aquifer_USA","Osoyoos Aquifer","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Playas Valley_MEX","Playas Valley","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Playas Valley_USA","Playas Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Pomfret-Vergelegen Dolomitic Aquifer_BWA","Pomfret-Vergelegen Dolomitic Aquifer","BWA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Pomfret-Vergelegen Dolomitic Aquifer_ZAF","Pomfret-Vergelegen Dolomitic Aquifer","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Presidio-Redford Bolson and Del Peso Valley_MEX","Presidio-Redford Bolson and Del Peso Valley","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Presidio-Redford Bolson and Del Peso Valley_USA","Presidio-Redford Bolson and Del Peso Valley","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Rechna Doab_IND","Rechna Doab","IND",100,TRUE,1,0,1657.41017236164,"upstream",10.0156187649409,16,273
+"Rechna Doab_PAK","Rechna Doab","PAK",100,TRUE,1,0,1657.41017236164,"downstream",10.9697348309319,18,273
+"Rheintal Aquifer_AUT","Rheintal Aquifer","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Rheintal Aquifer_CHE","Rheintal Aquifer","CHE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Rheintal Aquifer_LIE","Rheintal Aquifer","LIE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Rio Grande Delta_MEX","Rio Grande Delta","MEX",100,FALSE,0,1,NA,NA,NA,NA,45
+"Rio Grande Delta_USA","Rio Grande Delta","USA",100,FALSE,0,1,NA,NA,NA,NA,45
+"Salzburg Basin_AUT","Salzburg Basin","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Salzburg Basin_DEU","Salzburg Basin","DEU",100,FALSE,0,0,NA,NA,NA,NA,0
+"San Pedro Basin_MEX","San Pedro Basin","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"San Pedro Basin_USA","San Pedro Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Sandlands Aquifer_CAN","Sandlands Aquifer","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Sandlands Aquifer_USA","Sandlands Aquifer","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southcentral Floodplains_BGD","Southcentral Floodplains","BGD",100,FALSE,0,1,NA,NA,NA,NA,205
+"Southcentral Floodplains_IND","Southcentral Floodplains","IND",100,FALSE,0,0,NA,NA,NA,NA,205
+"Southcentral Mega Aquifer System_QAT","Southcentral Mega Aquifer System","QAT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southcentral Mega Aquifer System_SAU","Southcentral Mega Aquifer System","SAU",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southeastern Bengal Basin_BGD","Southeastern Bengal Basin","BGD",100,FALSE,0,0,NA,NA,NA,NA,181
+"Southeastern Bengal Basin_IND","Southeastern Bengal Basin","IND",100,FALSE,0,0,NA,NA,NA,NA,181
+"Southern Mekong Delta_KHM","Southern Mekong Delta","KHM",100,FALSE,0,0,NA,NA,NA,NA,84
+"Southern Mekong Delta_VNM","Southern Mekong Delta","VNM",100,FALSE,0,1,NA,NA,NA,NA,84
+"Southern Odanah Shale_CAN","Southern Odanah Shale","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southern Odanah Shale_USA","Southern Odanah Shale","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southern St. Lawrence Lowlands_CAN","Southern St. Lawrence Lowlands","CAN",100,FALSE,0,1,NA,NA,NA,NA,176
+"Southern St. Lawrence Lowlands_USA","Southern St. Lawrence Lowlands","USA",100,FALSE,0,1,NA,NA,NA,NA,176
+"Southwestern Chaco-Lower Parana Basin_120","Southwestern Chaco-Lower Parana Basin","120",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southwestern Chaco-Lower Parana Basin_ARG","Southwestern Chaco-Lower Parana Basin","ARG",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southwestern Chaco-Lower Parana Basin_BRA","Southwestern Chaco-Lower Parana Basin","BRA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southwestern Chaco-Lower Parana Basin_PRY","Southwestern Chaco-Lower Parana Basin","PRY",100,FALSE,0,0,NA,NA,NA,NA,0
+"Southwestern Chaco-Lower Parana Basin_URY","Southwestern Chaco-Lower Parana Basin","URY",100,FALSE,0,0,NA,NA,NA,NA,0
+"Stampriet Kalahari Karoo Aquifer System_BWA","Stampriet Kalahari Karoo Aquifer System","BWA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Stampriet Kalahari Karoo Aquifer System_NAM","Stampriet Kalahari Karoo Aquifer System","NAM",100,FALSE,0,0,NA,NA,NA,NA,0
+"Stampriet Kalahari Karoo Aquifer System_ZAF","Stampriet Kalahari Karoo Aquifer System","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Stockton Plateau_MEX","Stockton Plateau","MEX",100,FALSE,0,1,NA,NA,NA,NA,61
+"Stockton Plateau_USA","Stockton Plateau","USA",100,FALSE,0,1,NA,NA,NA,NA,61
+"Sundarbans and Southern Delta_BGD","Sundarbans and Southern Delta","BGD",100,FALSE,0,0,NA,NA,NA,NA,40
+"Sundarbans and Southern Delta_IND","Sundarbans and Southern Delta","IND",100,FALSE,0,0,NA,NA,NA,NA,40
+"Sylhet Basin_BGD","Sylhet Basin","BGD",100,FALSE,0,0,NA,NA,NA,NA,449
+"Sylhet Basin_IND","Sylhet Basin","IND",100,FALSE,0,0,NA,NA,NA,NA,449
+"Tijuana-San Diego Basin_MEX","Tijuana-San Diego Basin","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tijuana-San Diego Basin_USA","Tijuana-San Diego Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tournaisis Region Carbonate Aquifers_BEL","Tournaisis Region Carbonate Aquifers","BEL",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tournaisis Region Carbonate Aquifers_FRA","Tournaisis Region Carbonate Aquifers","FRA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Trans Gangetic Plain_IND","Trans Gangetic Plain","IND",100,FALSE,0,1,NA,NA,NA,NA,230
+"Trans Gangetic Plain_PAK","Trans Gangetic Plain","PAK",100,FALSE,0,1,NA,NA,NA,NA,230
+"Transboundary Judith River Aquifer_CAN","Transboundary Judith River Aquifer","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Transboundary Judith River Aquifer_USA","Transboundary Judith River Aquifer","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Transboundary Odanah Shale_CAN","Transboundary Odanah Shale","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Transboundary Odanah Shale_USA","Transboundary Odanah Shale","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Trebon Basin_AUT","Trebon Basin","AUT",100,FALSE,0,0,NA,NA,NA,NA,0
+"Trebon Basin_CZE","Trebon Basin","CZE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tuli Karoo Aquifer_BWA","Tuli Karoo Aquifer","BWA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tuli Karoo Aquifer_ZAF","Tuli Karoo Aquifer","ZAF",100,FALSE,0,0,NA,NA,NA,NA,0
+"Tuli Karoo Aquifer_ZWE","Tuli Karoo Aquifer","ZWE",100,FALSE,0,0,NA,NA,NA,NA,0
+"Upper Gangetic Plain_IND","Upper Gangetic Plain","IND",100,TRUE,1,0,3270.54402821694,"upstream",29.3011624959148,4,857
+"Upper Gangetic Plain_NPL","Upper Gangetic Plain","NPL",100,TRUE,1,0,3270.54402821694,"downstream",28.8548183002152,5,857
+"Upper Peninsula Jacobsville Sandstone and Cambrian-Ordovician and Silurian-Devonian Aquifers_CAN","Upper Peninsula Jacobsville Sandstone and Cambrian-Ordovician and Silurian-Devonian Aquifers","CAN",100,FALSE,0,0,NA,NA,NA,NA,0
+"Upper Peninsula Jacobsville Sandstone and Cambrian-Ordovician and Silurian-Devonian Aquifers_USA","Upper Peninsula Jacobsville Sandstone and Cambrian-Ordovician and Silurian-Devonian Aquifers","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Valle de Juarez and Hueco Bolson_MEX","Valle de Juarez and Hueco Bolson","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Valle de Juarez and Hueco Bolson_USA","Valle de Juarez and Hueco Bolson","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Wadi As-Sirhan Basin_JOR","Wadi As-Sirhan Basin","JOR",100,FALSE,0,0,NA,NA,NA,NA,0
+"Wadi As-Sirhan Basin_SAU","Wadi As-Sirhan Basin","SAU",100,FALSE,0,0,NA,NA,NA,NA,0
+"West Jutland Quaternary and Tertiary Sand Aquifer System_DEU","West Jutland Quaternary and Tertiary Sand Aquifer System","DEU",100,FALSE,0,0,NA,NA,NA,NA,0
+"West Jutland Quaternary and Tertiary Sand Aquifer System_DNK","West Jutland Quaternary and Tertiary Sand Aquifer System","DNK",100,FALSE,0,0,NA,NA,NA,NA,0
+"Western Bengal Basin_BGD","Western Bengal Basin","BGD",100,FALSE,0,1,NA,NA,NA,NA,154
+"Western Bengal Basin_IND","Western Bengal Basin","IND",100,FALSE,0,1,NA,NA,NA,NA,154
+"Western Brahmaputra Basin Aquifer_BGD","Western Brahmaputra Basin Aquifer","BGD",100,TRUE,1,0,21380.6054856205,"downstream",15.5711512447358,8,125
+"Western Brahmaputra Basin Aquifer_BTN","Western Brahmaputra Basin Aquifer","BTN",100,FALSE,0,0,NA,NA,NA,NA,125
+"Western Brahmaputra Basin Aquifer_IND","Western Brahmaputra Basin Aquifer","IND",100,TRUE,1,0,21380.6054856205,"upstream",16.493141017076,10,125
+"Western Carrizo-Wilcox_MEX","Western Carrizo-Wilcox","MEX",100,FALSE,0,1,NA,NA,NA,NA,58
+"Western Carrizo-Wilcox_USA","Western Carrizo-Wilcox","USA",100,FALSE,0,1,NA,NA,NA,NA,58
+"Willcox-Douglas Basin_MEX","Willcox-Douglas Basin","MEX",100,FALSE,0,0,NA,NA,NA,NA,0
+"Willcox-Douglas Basin_USA","Willcox-Douglas Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,0
+"Williston Basin_CAN","Williston Basin","CAN",100,FALSE,0,0,NA,NA,NA,NA,364
+"Williston Basin_USA","Williston Basin","USA",100,FALSE,0,0,NA,NA,NA,NA,364
+"Yuma Basin_MEX","Yuma Basin","MEX",100,TRUE,1,0,482.814161529364,"upstream",25.3605088088463,33,29
+"Yuma Basin_USA","Yuma Basin","USA",100,TRUE,1,0,482.814161529364,"downstream",24.6875405438324,33,29

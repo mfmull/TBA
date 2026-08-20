@@ -1,0 +1,28 @@
+var Irr1k = ee.Image("projects/globaltbav2/assets/IrrigationProjections/MaierIrrigatedArea"),
+    GWf = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWf"),
+    TBA = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_TBA_Split_2025"),
+    geometry = 
+    /* color: #d63000 */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.Geometry.Polygon(
+        [[[-156.04073421108856, 67.01726144806489],
+          [-156.04073421108856, -52.13151965063323],
+          [144.54520328891144, -52.13151965063323],
+          [144.54520328891144, 67.01726144806489]]], null, false);
+Map.addLayer(Irr1k)
+//Total Irrigation
+print(Irr1k.reduceRegion({reducer:ee.Reducer.mean(),scale:1000,geometry:geometry,bestEffort:true}))
+//GW
+print(Irr1k.multiply(GWf).reduceRegion({reducer:ee.Reducer.mean(),scale:1000,geometry:geometry,bestEffort:true}))
+
+//TBA
+var raster0 = TBA.reduceToImage({
+  properties: ['aq_id'],
+  reducer: ee.Reducer.first()
+}).unmask(0).gt(0);
+print(Irr1k.multiply(GWf).multiply(raster0).reduceRegion({reducer:ee.Reducer.mean(),scale:1000,geometry:geometry,bestEffort:true}))
+print(geometry.area(1))

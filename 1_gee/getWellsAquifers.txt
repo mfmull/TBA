@@ -1,0 +1,200 @@
+
+var CropSuitability = ee.Image("projects/globaltbav2/assets/IrrigationProjections/CropSuitabilityRainfedGAEZv4"),
+    RoadsTot = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadTotalGRIP"),
+    wells = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_Wells_JasechkoEtAlNature2024_Fig1"),
+    GrowingDays = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GAEZ_GrowingDaysPeriod"),
+    LC_DominantClass = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GAEZ_LandCoverDominant"),
+    LC_UrbPct = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GAEZ_LandCover_Artif"),
+    LC_IrCrpPct = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GAEZ_LandCover_IrCropland"),
+    RoadsHiWay = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadHighwayGRIP"),
+    RoadsPrinc = ee.Image("projects/globaltbav2/assets/IrrigationProjections/RoadPrincipalGRIP"),
+    SoilSuitabHiRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilSuitability_Hi_Rainfed"),
+    SoilSuitabLoRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilSuitability_Lo_Rain"),
+    SoilTerrainSuitabHiRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilTerrainSuitability_Hi_Rain"),
+    SoilTerrainSuitabLoRainfed = ee.Image("projects/globaltbav2/assets/IrrigationProjections/SoilTerrainSuitability_Lo_Rain"),
+    crp = ee.Image("projects/globaltbav2/assets/IrrigationProjections/Crop1k_0307"),
+    urb = ee.ImageCollection("JRC/GHSL/P2023A/GHS_SMOD"),
+    Irr1k = ee.Image("projects/globaltbav2/assets/IrrigationProjections/MaierIrrigatedArea"),
+    GWf = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWf"),
+    aqf = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_AquiferTrends_JasechkoEtAlNature2024"),
+    table = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/AquifersNature2024");
+
+//aqf=aqf.limit(5)
+//wells=wells.limit(5)
+// ================== 1) GEOMETRY PREDICTORS ==================
+var addGeom = function(f) {
+  var g = f.geometry();
+  var area_km2  = g.area(1).divide(1e6);
+  var perim_km  = g.perimeter(1).divide(1000);
+  var compact   = ee.Number(4).multiply(Math.PI).multiply(area_km2)
+                    .divide(perim_km.pow(2));         // Polsby–Popper
+  // Oriented bounding rectangle elongation proxy
+  var rect = g.bounds();
+  var coords = ee.List(rect.coordinates().get(0));
+  var xs = ee.List.sequence(0, coords.length().subtract(1)).map(function(i){return ee.Number(ee.List(coords.get(i)).get(0));});
+  var ys = ee.List.sequence(0, coords.length().subtract(1)).map(function(i){return ee.Number(ee.List(coords.get(i)).get(1));});
+  var w = ee.Number(xs.sort().get(-1)).subtract(ee.Number(xs.sort().get(0))).abs();
+  var h = ee.Number(ys.sort().get(-1)).subtract(ee.Number(ys.sort().get(0))).abs();
+  var elong = w.max(h).divide(w.min(h));
+  var lat_c = ee.Number(g.centroid(1).coordinates().get(1));
+  var lon_c = ee.Number(g.centroid(1).coordinates().get(0));
+
+  return f.set({area_km2: area_km2, perim_km: perim_km, compact: compact, elong: elong, lat_c: lat_c,lon_c:lon_c});
+};
+var aqf_geom = aqf.map(addGeom);
+
+//Raster based predictors
+//Terrain
+var SRTM  = ee.Image('USGS/SRTMGL1_003');        // elevation (m)
+var SLOPE = ee.Terrain.slope(SRTM);              // slop
+
+//Climate
+var CHIRPS = ee.ImageCollection('UCSB-CHG/CHIRPS/DAILY')     // precip ~ climatology
+  .filterDate('2010-01-01', '2020-12-31').sum().divide(11); // mm/yr avg over 11 years
+var TERRACLIM = ee.ImageCollection('IDAHO_EPSCOR/TERRACLIMATE')
+  .filterDate('2010-01-01', '2020-12-31');
+var PET = TERRACLIM.select('pet').mean();        // mm/yr
+
+//LandCover
+crp=crp
+var Urb=ee.Image(urb.filter(ee.Filter.calendarRange(2005,2005,'year')).first()).gt(20).multiply(ee.Image.pixelArea()).divide(1e7)
+var GW=Irr1k.multiply(GWf).multiply(ee.Image.pixelArea()).divide(1e7)
+var Ir=Irr1k.multiply(ee.Image.pixelArea()).divide(1e7)
+
+
+//Suitability
+var STS=SoilTerrainSuitabHiRainfed.add(SoilTerrainSuitabLoRainfed).divide(2)
+var CS_max=CropSuitability.reduce(ee.Reducer.max())
+var CS_mean=CropSuitability.reduce(ee.Reducer.mean());
+
+
+//Humans -- Roads and nightlight
+var RDS_main=RoadsHiWay.add(RoadsPrinc)
+var RDS_tot=RoadsTot
+var scale = 1000;   // meters per pixel (set to your raster’s resolution)
+var maxDist_km = 200;  // how far you want distances, e.g. 200 km
+
+// Compute distance to nearest pixel > 0
+
+// Compute distance (in meters) to the nearest pixel > 0
+var RDS_mainDist = RDS_main
+  .gt(0)
+  .selfMask()
+  .fastDistanceTransform(512)   // search radius: 512 pixels
+  .sqrt()                       // convert squared to linear distance (in pixels)
+  .multiply(RDS_main.projection().nominalScale()).divide(1000) // convert pixels → meters--°km
+  .rename('RDS_mainDist');
+  
+var VIIRS = ee.ImageCollection('NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG')
+  .filterDate('2020-01-01','2020-12-31')
+  .select('avg_rad').mean().rename('ntl');
+var GHSL_POP = ee.Image('JRC/GHSL/P2016/POP_GPW_GLOBE_V1/2015')  // population count
+  .rename('pop');
+
+
+var predictorsImg = ee.Image(1)
+  .addBands(SRTM.rename('elev'))
+  .addBands(SLOPE.rename('slope'))
+  .addBands(CHIRPS.rename('prec_mm'))
+  .addBands(PET.rename('pet_mm'))
+  .addBands(crp.rename('crpkHaKm2'))
+  .addBands(Urb.rename('urbkHaKm2'))
+  .addBands(GW.rename('GWIrKHaKm2'))
+  .addBands(GHSL_POP).addBands(VIIRS)
+  .addBands(RDS_main.rename('RDS_main')).addBands(RDS_tot.rename('RDS_tot')).addBands(RDS_mainDist.rename('RDS_mainDist'))
+  .addBands(STS.rename('STS')).addBands(CS_max.rename('CS_max')).addBands(CS_mean.rename('CS_min'));
+
+
+
+var AqfWells_withAttr = predictorsImg.reduceRegions({
+  collection: aqf_geom,
+  reducer: ee.Reducer.mean(),
+  scale: 1000,         // harmonize to ~1 km
+  tileScale: 4
+}).map(function(f){ return ee.Feature(null, f.toDictionary()); });
+
+Export.table.toDrive({
+  collection: AqfWells_withAttr,
+  description: 'AqfWells_withAttr',
+  folder: 'TBA2',
+  fileNamePrefix:'AqfWells_withAttr',
+  fileFormat: 'csv'
+}); 
+
+Map.addLayer(wells)
+
+// 1. Add lon/lat safely
+wells = wells.map(function(f) {
+  var coords = f.geometry().coordinates();
+  return f.set({
+    lon: coords.get(0),
+    lat: coords.get(1)
+  });
+});
+
+
+
+
+// Group 1: terrain + climate
+var img1 = ee.Image(1)
+  .addBands(SRTM.rename('elev'))
+  .addBands(SLOPE.rename('slope'))
+  .addBands(CHIRPS.rename('prec_mm'))
+  .addBands(PET.rename('pet_mm')).unmask(-9999)
+  .focal_mean({radius: 1000, units: 'meters'});
+
+// Group 2: land & suitability
+var img2 = ee.Image(1)
+  .addBands(crp.rename('crpkHaKm2'))
+  .addBands(Urb.rename('urbkHaKm2'))
+  .addBands(GW.rename('GWIrKHaKm2'))
+  .addBands(STS.rename('STS'))
+  .addBands(CS_max.rename('CS_max'))
+  .addBands(CS_mean.rename('CS_min')).unmask(-9999)
+  .focal_mean({radius: 1000, units: 'meters'});
+
+// Group 3: humans & infrastructure
+var img3 = ee.Image(1)
+  .addBands(GHSL_POP)
+  .addBands(VIIRS)
+  .addBands(RDS_main.rename('RDS_main'))
+  .addBands(RDS_tot.rename('RDS_tot'))
+  .addBands(RDS_mainDist.rename('RDS_mainDist')).unmask(-9999)
+  .focal_mean({radius: 1000, units: 'meters'});
+  
+  
+  
+var Wells_withAttr_1 = img1.sampleRegions({
+  collection: wells,
+  scale: 1000,
+  tileScale: 8});
+
+var Wells_withAttr_2 = img2.sampleRegions({
+  collection: wells,
+  scale: 1000,
+  tileScale: 8});
+
+var Wells_withAttr_3 = img3.sampleRegions({
+  collection: wells,
+  scale: 1000,
+  tileScale: 8});
+
+Export.table.toDrive({
+  collection: Wells_withAttr_1,
+  description: 'Wells_withAttr_part1',
+  folder: 'TBA2',
+  fileFormat: 'CSV'
+});
+Export.table.toDrive({
+  collection: Wells_withAttr_2,
+  description: 'Wells_withAttr_part2',
+  folder: 'TBA2',
+  fileFormat: 'CSV'
+});
+Export.table.toDrive({
+  collection: Wells_withAttr_3,
+  description: 'Wells_withAttr_part3',
+  folder: 'TBA2',
+  fileFormat: 'CSV'
+});
+

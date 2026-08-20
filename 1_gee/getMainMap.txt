@@ -1,0 +1,76 @@
+var out1k = ee.Image("projects/globaltbav2/assets/IrrigationProjections/out1k"),
+    aqu = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_TBA_2025"),
+    ctrl = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_controlBas2025"),
+    lb = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_LandBorders_2025");
+
+// -------------------- SETTINGS --------------------
+Map.addLayer(
+  ee.Image(1),
+  {min: 0, max: 1, palette: ["#FFFFFF"]},
+  "White background"
+);
+// Replace these with the correct out1k band names:
+var SW_BAND = "SWFrc";      // e.g., surface-water irrigation fraction
+var GW_BAND = "GWFrc";      // e.g., groundwater irrigation fraction
+
+// -------------------- BASEMAP: LAND LIGHT GREY --------------------
+var landCover = ee.Image('MODIS/006/MCD12Q1/2019_01_01').select('LC_Type1');
+// LC_Type1: 17 = water
+var land = landCover.neq(17).selfMask();
+
+Map.addLayer(
+  land,
+  {min: 0, max: 1, palette: ["#E0E0E0"]},
+  "Land"
+);
+
+//	•	#E0E0E0 (clean light grey),#DCDCDC (a touch darker),#D6D6D6 (clearly darker but still soft)
+// -------------------- AQUIFERS + CONTROL --------------------
+// Aquifers: dark grey fill + black borders
+Map.addLayer(
+  aqu.style({fillColor: "BDBDBD", color: "000000", width: 0.3}),
+  {},
+  "Aquifers"
+);
+
+// Control: pink fill (keep border subtle or none; adjust as you like)
+Map.addLayer(
+  ctrl.style({fillColor: "FFC9D6", color: "FFC9D6", width: 0.0}),
+  {},
+  "Control (pink)"
+);
+
+
+	//#FFC9D6  (subtle but clearer), #FFB6C8  (balanced soft pink), #FFA6BD  (noticeably stronger but still pastel)
+
+// -------------------- IRRIGATED CROPLAND PIXELS --------------------
+// Irrigated cropland fraction mask
+var cropland = out1k.select("GWFrc").add(out1k.select("SWFrc")).gt(0.05);
+print(out1k)
+// Dominance masks: >50% SW vs >50% GW
+var swDom = out1k.select("GWFrc").lt(out1k.select("SWFrc"));
+var gwDom = out1k.select("GWFrc").gt(out1k.select("SWFrc"));
+
+// Build colored pixel layers
+var swPixels = ee.Image(1).updateMask(cropland.and(swDom)).rename("SW");
+var gwPixels = ee.Image(1).updateMask(cropland.and(gwDom)).rename("GW");
+
+// Add them (blue for SW, gold for GW)
+Map.addLayer(swPixels, {palette: ["#2C7FB8"]}, "Irrigated cropland (SW>50%)");
+Map.addLayer(gwPixels, {palette: ["#D9A600"]}, "Irrigated cropland (GW>50%)");
+
+// -------------------- BORDERS IN WHITE (TOP) --------------------
+
+
+Map.addLayer(
+  lb.style({fillColor: "00000000", color: "white", width: 1}),
+  {},
+  "Borders"
+);
+
+
+// Optional: quick check of available bands
+print("out1k bands:", out1k.bandNames());
+
+// Optional: view
+// Map.centerObject(aqu, 2);

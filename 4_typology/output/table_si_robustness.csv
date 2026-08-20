@@ -1,0 +1,11 @@
+variant,si_figure,description,IU0,IU1,UB,DA,BL
+preferred,Fig. 4,Finalised specification (stages 1-3),87,111,205,125,40
+stage1_published,S18,"Stage 1: segment-based zones, no audit corrections (published)",85,118,207,113,45
+stage2_dyad_border,S19,"Stage 2: dyad-specific border zones, no audit corrections",98,118,201,112,39
+stage3_tier1,S20,Stage 3: dyad borders + Tier 1 audit corrections only,88,114,202,124,40
+near5,S12,Near zone 5 km instead of 10 km,85,118,207,139,19
+far200,S13,Far zone 200 km instead of 100 km,81,119,203,119,46
+eps_lo,S10,Detection threshold 0.01 ha instead of 1 ha,76,104,153,141,94
+irrig,S11,All irrigated cropland instead of groundwater-irrigated,76,111,154,158,69
+thresh50,S14,Concentration threshold 50% instead of 99%,85,118,207,62,96
+bl_floor,S15,BL requires the concentrated side to exceed 10 ha,85,118,207,137,21

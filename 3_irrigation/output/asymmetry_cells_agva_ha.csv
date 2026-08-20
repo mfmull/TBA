@@ -1,0 +1,9 @@
+"hyp","cell","n_treat","estimable","total","n_requested","n_failed","n_sig","n_pos_sig","n_neg_sig","share_sig","share_pos_sig","share_neg_sig","n_int_sig","n_int_pos_sig","n_int_neg_sig","mean_eff","med_eff","q05_eff","q95_eff"
+"H1","High energy asym. x Aligned",49,TRUE,100,100,0,3,3,0,0.03,0.03,0,100,100,0,0.00346322069543704,0.0026748496494568,-0.00397677363982013,0.0151012662487822
+"H1","High energy asym. x Misaligned",21,TRUE,100,100,0,0,0,0,0,0,0,100,100,0,-0.00204242115660046,-0.00158730305335062,-0.0075555082755616,0.00283058382932579
+"H1","Low energy asym. x Aligned",68,TRUE,100,100,0,21,0,21,0.21,0,0.21,100,100,0,-0.0097994992673506,-0.00996779099397615,-0.0143641124277833,-0.00482181190391852
+"H1","Low energy asym. x Misaligned",4,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"H2","High energy asym. x Aligned",17,TRUE,100,100,0,72,1,71,0.72,0.01,0.71,11,10,1,-0.509183207311097,-0.536311540182383,-0.831190956588668,-0.0925497756598159
+"H2","High energy asym. x Misaligned",5,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"H2","Low energy asym. x Aligned",46,TRUE,100,100,0,67,0,67,0.67,0,0.67,17,1,16,-0.21049036990464,-0.201717973537801,-0.362614812297679,-0.0530144259446061
+"H2","Low energy asym. x Misaligned",3,FALSE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

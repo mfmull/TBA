@@ -1,0 +1,8 @@
+covariate,in_ps,unweighted,matched,ATO
+lat_c,TRUE,-0.0337,-0.0095,0
+lon_c,TRUE,0.2787,0.084,0
+urbkHaKm2,TRUE,0.3075,-0.133,0
+CS_max,TRUE,0.053,-0.0585,0
+LB_river,TRUE,0.2366,0.121,-0
+prec_mm,FALSE,-0.0973,-0.0958,-0.1368
+effective control sample size (segments),NA,654,88,480.37090564026926

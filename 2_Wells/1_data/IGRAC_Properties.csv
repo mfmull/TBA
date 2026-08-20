@@ -1,0 +1,204 @@
+﻿aq_code,CODE_2021,region_cod,twap_regio,aquifer,Confinement.description.,Lithology,Tr,S
+10N,N010,10N_MEX,Americas,Sonoyta-Papagos,1. Whole aquifer unconfined,Sediment - Sand,0.037986111,0.22
+11N,N011,11N_MEX,Americas,Nogales,1. Whole aquifer unconfined,Sediment - Sand,0.002800926,0.22
+12C,C012,12C_GTM,Americas,Delta del Rio Motagua,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+12N,N012,12N_MEX,Americas,Santa cruz,1. Whole aquifer unconfined,Sediment - Sand,0.021550926,0.22
+12S,S012,12S_ECU,Americas,Puyango-Tumbes-catamayo-chira,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+13N,N013,13N_MEX,Americas,San Pedro,1. Whole aquifer unconfined,Sediment - Gravel,0.005960185,0.19
+13S,S013,13S_VEN,Americas,Amazonas,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.005787037,0.10533528
+14C,C014,14C_SLV,Americas,Esquipulas-Ocotepeque-citala,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Silt - Clay,0.000289352,0.136659255
+14N,N014,14N_MEX,Americas,conejos Medanos-Bolson de la Mesilla,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.002800926,0.1755156
+14S,S014,14S_BOL,Americas,Titicaca,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Silt - Clay,0.0022,0.13780797
+15N,N015,15N_MEX,Americas,Bolson del Hueco-Valle de Juarez,1. Whole aquifer unconfined,Sediment - Sand,0.008796296,0.22
+15S,S015,15S_PRY,Americas,Pantanal,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0.00066,0.14
+16N,N016,16N_MEX,Americas,Edwards-Trinity-El Burro,1. Whole aquifer unconfined,Sedimentary rocks - Limestone,0.001145833,0.14
+16S,S016,16S_PRY,Americas,Agua Dulce,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0,0.14
+17C,C017,17C_NIC,Americas,Estero Real-Rio Negro,1. Whole aquifer unconfined,Sediment - Sand,0.000636574,0.22
+17N,N017,17N_MEX,Americas,cuenca Baja del Rio Bravo-Grande,3. Whole aquifer semi-confined,Sediment - Sand,0.006273148,0.1152578
+17S,S017,17S_BOL,Americas,Ollague-Pastos Grandes,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+18C,C018,18C_CRI,Americas,Sixaola / Salinas aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+18N,N018,18N_MEX,Americas,Los Mimbres-Las Palmas,1. Whole aquifer unconfined,Sediment - Sand,0.002152778,0.22
+19N,N019,19N_CAN,Americas,Judith River,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+19S,S019,19S_BRA,Americas,Aquidauana-Aquidaban,3. Whole aquifer semi-confined,Sedimentary rocks - Sandstone,0.0018,0.07050292
+1C,C001,1C_MEX,Americas,Soconusco-Suchiate/coatan,1. Whole aquifer unconfined,Sediment - Sand,0.000787037,0.22
+1CB,CB001,1CB_DOM,Americas,Masacre,2. Whole aquifer confined,Sedimentary rocks - Limestone,0,0.14
+20N,N020,20N_CAN,Americas,Milk River,1. Whole aquifer unconfined,Sediment - Sand,8.10E-05,0.22
+20S,S020,20S_BRA,Americas,caiua-Bauru-Acaray Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.000810185,0.10512573
+21S,S021,21S_URY,Americas,Sistema Acuifero Guarani,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.001232639,0.036552766
+22S,S022,22S_PRY,Americas,Serra Geral,"7. Aquifer mostly semi-confined, but some parts unconfined",Crystalline rocks - Basalt,0.000960648,0.048002743
+23S,S023,23S_URY,Americas,Litoraneo-chuy,"7. Aquifer mostly semi-confined, but some parts unconfined",Sediment - Sand,0.00462963,0.132
+24S,S024,24S_URY,Americas,Permo-carbonifero,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.001168981,0.105033528
+25S,S025,25S_ARG,Americas,Litoral-cretacico,2. Whole aquifer confined,Sedimentary rocks - Sandstone,0.000486111,0.000234696
+26S,S026,26S_ARG,Americas,Salto-Salto chico,3. Whole aquifer semi-confined,Sedimentary rocks - Sandstone,1.45E-05,0.070134112
+27S,S027,27S_ARG,Americas,Punenos,"7. Aquifer mostly semi-confined, but some parts unconfined",Sediment - Sand,0.004733796,0.132420624
+28S,S028,28S_ARG,Americas,Yrenda-Toba-Tarijeno,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.001331019,0.16955676
+29S,S029,29S_ARG,Americas,El condor-canadon del condor,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.001736111,0.165
+2C,C002,2C_MEX,Americas,chicomuselo-cuilco/Selegua,1. Whole aquifer unconfined,Sediment - Sand,0.001,0.22
+2CB,CB002,2CB_DOM,Americas,Artibonito,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0,0.105
+2N,N002,2N_CAN,Americas,Okanagan-Osoyoos,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+2S,S002,2S_COL,Americas,Tachira Pamplonita,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.00462963,0.16578867
+3C,C003,3C_MEX,Americas,Ocosingo-Usumacinta-Pocom-Ixcan,1. Whole aquifer unconfined,Sediment - Sand,0.00115,0.22
+3S,S003,3S_VEN,Americas,La Guajira,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.002314815,0.166156716
+4C,C004,4C_MEX,Americas,Marquez de comillas-chixoy/Xaclbal,1. Whole aquifer unconfined,Sediment - Sand,0.00115,0.22
+4N,N004,4N_CAN,Americas,Poplar,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+4S,S004,4S_VEN,Americas,Grupo Roraima,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0,0.14
+5C,C005,5C_MEX,Americas,Boca del cerro-San Pedro,1. Whole aquifer unconfined,Sediment - Sand,0.001,0.22
+5N,N005,5N_CAN,Americas,Estevan,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+5S,S005,5S_BRA,Americas,Boa Vista-Serra do Tucano-North Savanna,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0,0.105
+6C,C006,6C_MEX,Americas,Trinitaria-Nenton,1. Whole aquifer unconfined,Sediment - Sand,0.001,0.22
+6N,N006,6N_CAN,Americas,Northern Great Plains,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+6S,S006,6S_GUF,Americas,Zanderij,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.000405,0.035169736
+7C,C007,7C_MEX,Americas,Peninsula de Yucatan-candelaria-Hondo,1. Whole aquifer unconfined,Sediment - Sand,0.001,0.22
+7N,N007,7N_CAN,Americas,chateauguay,3. Whole aquifer semi-confined,Sediment - Sand,0.001100116,0.111069086
+7S,S007,7S_GUY,Americas,coesewijne,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+8C,C008,8C_GTM,Americas,Mopan-Belice,1. Whole aquifer unconfined,Sediment - Sand,0.1,0.22
+8N,N008,8N_MEX,Americas,San Diego-Tijuana,1. Whole aquifer unconfined,Sediment - Sand,0.018611111,0.22
+8S,S008,8S_GUY,Americas,A-Sand/B-Sand,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Gravel,1.71,0.050496946
+9N,N009,9N_MEX,Americas,cuenca Baja del Rio colorado,1. Whole aquifer unconfined,Sediment - Sand,0.07400463,0.22
+9S,S009,9S_BRA,Americas,costeiro,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0,0.14
+AF1,AF001,AF1_ZAF,Southern-Eastern Africa,Karoo Sedimentary Aquifer,"7. Aquifer mostly semi-confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.000231481,0.084844906
+AF10,AF010,AF10_NAM,Southern-Eastern Africa,Northern Kalahari / Karoo Basin / Eiseb Graben Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.001736111,0.105318516
+AF11,AF011,AF11_MOZ,Southern-Eastern Africa,Save Aluvial,1. Whole aquifer unconfined,Sediment - Sand,0,0.22
+AF12,AF012,AF12_ZWE,Southern-Eastern Africa,Eastern KalahariKaroo Basin,2. Whole aquifer confined,Sedimentary rocks - Sandstone,0.002314815,0.14
+AF13,AF013,AF13_NAM,Southern-Eastern Africa & Central-Western Africa,cuvelai and Ethosa Basin / Ohangwena Aquifer System,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.002546296,0.0734023
+AF14,AF014,AF14_ZMB,Southern-Eastern Africa & Central-Western Africa,Nata Karoo Sub-basin / caprivi deep-seated Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.002233796,0.16832994
+AF16,AF016,AF16_ZMB,Southern-Eastern Africa,Medium Zambesi Aquifer,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0.000299769,0.14
+AF17,AF017,AF17_MWI,Southern-Eastern Africa,Shire Valley Alluvial Aquifer,"7. Aquifer mostly semi-confined, but some parts unconfined",Sediment - Sand,0.000582639,0.133261872
+AF18,AF018,AF18_ZMB,Southern-Eastern Africa,Arangua Alluvial,1. Whole aquifer unconfined,Sediment - Sand,6.94E-05,0.22
+AF19,AF019,AF19_MWI,Southern-Eastern Africa,Sand and Gravel Aquifer,3. Whole aquifer semi-confined,Metamorphic rocks,3.58E-05,0.040004572
+AF20,AF020,AF20_TZA,Southern-Eastern Africa,coastal Sedimentary Basin III,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.009722222,0.06130936
+AF21,AF021,AF21_TZA,Southern-Eastern Africa,Karoo Sandstone Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,3.00E-04,0.03512573
+AF22,AF022,AF22_ZMB,Southern-Eastern Africa & Central-Western Africa,Kalahari/Katangian Basin/Lualaba,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0,0.105
+AF23,AF023,AF23_AGO,Central-Western Africa & Southern-Eastern Africa,coango,"7. Aquifer mostly semi-confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.023148148,0.084
+AF24,AF024,AF24_MWI,Southern-Eastern Africa,Weathered Basement,3. Whole aquifer semi-confined,Metamorphic rocks,6.60E-05,0.040002286
+AF25,AF025,AF25_COD,Southern-Eastern Africa & Central-Western Africa,Karoo-carbonate,8. No data (assumed unconfined),Sedimentary rocks - Sandstone,6.94E-05,0.14
+AF26,AF026,AF26_TZA,Southern-Eastern Africa & Central-Western Africa,Tanganyika,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.000578704,0.0576289
+AF27,AF027,AF27_AGO,Central-Western Africa,Dolomitic Aquifer Basin de Shiloango,1. Whole aquifer unconfined,Sedimentary rocks - Dolostone,0,0.14
+AF29,AF029,AF29_CMR,Central-Western Africa,cuvette,8. No data (assumed unconfined),Sedimentary rocks - Sandstone,0,0.14
+AF3,AF003,AF3_ZAF,Southern-Eastern Africa,coastal Sedimentary Basin VI / coastal Plain Sedimentary Basin Aquifer,1. Whole aquifer unconfined,Sediment - Sand,0.001157407,0.22
+AF31,AF031,AF31_TZA,Southern-Eastern Africa,coastal Sedimentary Basin I / Karoo Sedimetary Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0.00018,0.035075438
+AF32,AF032,AF32_TZA,Southern-Eastern Africa,Kilimanjaro Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Crystalline rocks - Basalt,0.180555556,0.060001524
+AF33,AF033,AF33_COG,Central-Western Africa,AF33,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF34,AF034,AF34_COG,Central-Western Africa,AF34,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF36,AF036,AF36_TZA,Central-Western Africa,Kagera Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.006944444,0.105031013
+AF38,AF038,AF38_KEN,Southern-Eastern Africa,Merti Aquifer,2. Whole aquifer confined,Sedimentary rocks - Sandstone,0.00318287,0.000435864
+AF39,AF039,AF39_UGA,Southern-Eastern Africa,Mount Elgon Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Crystalline rocks - Basalt,0,0.02
+AF4,AF004,AF4_SWZ,Southern-Eastern Africa,Rhyolite-Breccia Aquifer,2. Whole aquifer confined,Crystalline rocks - Basalt,0.92,1.43E-05
+AF40,AF040,AF40_COG,Central-Western Africa,AF40,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF42,AF042,AF42_CMR,Central-Western Africa,Rio DelRey,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF43,AF043,AF43_ETH,Southern-Eastern Africa,Dawa,"7. Aquifer mostly semi-confined, but some parts unconfined",Sedimentary rocks - Limestone,0.000578704,0.084268224
+AF44,AF044,AF44_ETH,Southern-Eastern Africa,Jubba,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF45,AF045,AF45_SOM,Southern-Eastern Africa,Shabelle,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.000465,0.105064961
+AF46,AF046,AF46_SSD,Southern-Eastern Africa & North Africa-Western Asia,Sudd Basin,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.001273148,0.03525146
+AF47,AF047,AF47_CIV,Central-Western Africa,Tano Basin,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.000256944,0.166069086
+AF48L1,AF048,AF48L1_GHA,Central-Western Africa,Keta / Dahomey / Cotier basin aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.00066088,0.166770126
+AF48L2,AF048,AF48L2_TGO,Central-Western Africa,Keta / Dahomey / Cotier basin aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0.009502315,0.035678942
+AF48L3,AF048,AF48L3_BEN,Central-Western Africa,Keta / Dahomey / Cotier basin aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.075,0.0628867
+AF49,AF049,AF49_CIV,Central-Western Africa,cestos - Danane Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Crystalline rocks - Granite,0.00011,0.020004001
+AF5,AF005,AF5_NAM,Southern-Eastern Africa,SE Kalahri Karoo Basin / Stampriet Artesian Aquifer System,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.000231481,0.03575438
+AF51,AF051,AF51_CMR,Central-Western Africa,Aquifer Vallee de la Benoue,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF52,AF052,AF52_TCD,Central-Western Africa & North Africa-Western Asia,Lake chad Basin,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.0011,0.17428878
+AF53,AF053,AF53_SSD,"Southern-Eastern Africa, North Africa-Western Asia & Central-Western Africa",Baggara Basin,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.0021,0.03588011
+AF54,AF054,AF54_BEN,Central-Western Africa,Volta Basin,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.0072,0.10600584
+AF56,AF056,AF56_MLI,North Africa-Western Asia & Central-Western Africa,Irhazer-Illuemeden Basin,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.000694444,0.03550292
+AF58,AF058,AF58_SEN,North Africa-Western Asia & Central-Western Africa,Senegalo-Mauretanian Basin,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.035196759,0.081289
+AF59,AF059,AF59_ETH,Southern-Eastern Africa,Afar Rift valley / Afar Triangle Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Crystalline rocks - Granite,0.020451389,0.060002096
+AF6,AF006,AF6_ZAF,Southern-Eastern Africa,Khakhea/Bray Dolomite,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Dolostone,0.00025463,0.105
+AF61,AF061,AF61_ETH,Southern-Eastern Africa & North Africa-Western Asia,Gedaref,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,5.79E-05,0.14
+AF63,AF063,AF63_TCD,North Africa-Western Asia & Central-Western Africa,Nubian Sandstone Aquifer System (NSAS),"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.138888889,0.0996913
+AF64,AF064,AF64_MLI,North Africa-Western Asia & Central-Western Africa,Taoudeni Basin,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.004565972,0.10533528
+AF69,AF069,AF69_TBA,Northwest Sahara Aquifer System (NWSAS),Northwest Sahara Aquifer System (NWSAS),"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.016990741,0.115044076
+AF7,AF007,AF7_ZAF,Southern-Eastern Africa,Zeerust / Lobatse / Ramotswa Dolomite Basin Aquifer,"7. Aquifer mostly semi-confined, but some parts unconfined",Sedimentary rocks - Dolostone,0.011574074,0.084279624
+AF70,AF070,AF70_TBA,North Africa-Western Asia,Systeme Aquifere d'Errachidia,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0,0.055
+AF71,AF071,AF71_BWA,Southern-Eastern Africa,Ncojane Basin,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF72,AF072,AF72_KEN,Southern-Eastern Africa,Rift Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF73,AF073,AF73_ERI,Southern-Eastern Africa,Mereb,1. Whole aquifer unconfined,Crystalline rocks - Granite,0.00208,0.08
+AF75,AF075,AF75_TBA,North Africa-Western Asia,Ain Beni Mathar,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0,0.035
+AF79,AF079,AF79_TBA,North Africa-Western Asia,Systeme Aquifere de la Djeffara,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.000162037,0.110259478
+AF8,AF008,AF8_ZAF,Southern-Eastern Africa,Limpopo Basin,"4. Aquifer mostly unconfined, but some parts confined",Crystalline rocks - Granite,5.21E-05,0.06
+AF80,AF080,AF80_TBA,North Africa-Western Asia,Triffa,1. Whole aquifer unconfined,Sediment - Gravel,0.01,0.19
+AF81,AF081,AF81_AGO,Central-Western Africa & Southern-Eastern Africa,Aquifere cotier,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF82,AF082,AF82_COG,Central-Western Africa,AF82,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AF83,AF083,AF83_UGA,Southern-Eastern Africa & Central-Western Africa,Aquifere du Rift,"6. Aquifer mostly confined, but some parts unconfined",Crystalline rocks - Granite,0,0.02
+AF88,AF088,AF88_BFA,Central-Western Africa,Aquifer extension Sud-Est de Taoudeni,"6. Aquifer mostly confined, but some parts unconfined",Metamorphic rocks,4.00E-04,0.02020574
+AF9,AF009,AF9_ZAF,Southern-Eastern Africa,Tuli Karoo Sub-Basin,"6. Aquifer mostly confined, but some parts unconfined",Crystalline rocks - Basalt,0.004861111,0.02002286
+AS100,AS100,AS100_MNG,South-Eastern Asia-Pacific & Europe,Minj River Basin,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS101,AS101,AS101_MNG,South-Eastern Asia-Pacific & Europe,Balj River Basin,1. Whole aquifer unconfined,Sediment - Sand,0.000289352,0.22
+AS102,AS102,AS102_MNG,South-Eastern Asia-Pacific & Europe,Onon River Basin,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS103,AS103,AS103_MNG,South-Eastern Asia-Pacific & Europe,Ulz River Basin,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.002314815,0.16543815
+AS104,AS104,AS104_CHN,South-Eastern Asia-Pacific & Europe,Ercguna River,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS105,AS105,AS105_CHN,South-Eastern Asia-Pacific & Europe,Zeya River Basin,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS106,AS106,AS106_MNG,South-Eastern Asia-Pacific,Herlen River Basin,1. Whole aquifer unconfined,Sediment - Gravel,0.020600579,0.19
+AS108,AS108,AS108_MNG,South-Eastern Asia-Pacific,Buir Nuur-Khalkh river Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.001157407,0.166367028
+AS109,AS109,AS109_MNG,South-Eastern Asia-Pacific,Zamiin-Uud Basin,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.001782407,0.035265793
+AS11,AS011,AS11_KAZ,Europe & Central Asia,Syrt,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.003472222,0.16605156
+AS110,AS110,AS110_MNG,South-Eastern Asia-Pacific,Onch Kharikhanii Sair Aquifer,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0.003833912,0.14
+AS111,AS111,AS111_MNG,South-Eastern Asia-Pacific,Dankhan Khudgiin Sair Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.000449653,0.165742401
+AS113,AS113,AS113_AFG,South-Eastern Asia-Pacific,Kabul River Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS114,AS114,AS114_CHN,South-Eastern Asia-Pacific,Yalu River Basin,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Shale,0.013888889,0.035553212
+AS118,AS118,AS118_LAO,South-Eastern Asia-Pacific,Lower Mekong River 1 Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS119,AS119,AS119_CHN,South-Eastern Asia-Pacific,Karst Aquifer of Upper Zuojiang Valley,1. Whole aquifer unconfined,Sediment - Sand,0.05787037,0.22
+AS12,AS012,AS12_ARM,Europe,Leninak-Shiraks Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS122,AS122,AS122_AZE,Europe,Kura River Valley Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS125,AS125,AS125_TBA,Neogene Aquifer System (North-West): Upper and Lower Fars,Neogene Aquifer System (North-West): Upper and Lower Fars,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Limestone,0.000451389,0.10571247
+AS126,AS126,AS126_TBA,North Africa-Western Asia,Saq-Ram Aquifer System (West),"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.015243056,0.038457575
+AS127,AS127,AS127_TBA,North Africa-Western Asia,Wasia-Biyadh-Aruma Aquifer System (North): Sakaka-Rutba,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.050260417,0.035955548
+AS128,AS128,AS128_TBA,North Africa-Western Asia,Neogene Aquifer System (South-East): Dibdibba-Kuwait Group,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Gravel,4.5,0.14276289
+AS129,AS129,AS129_TBA,North Africa-Western Asia,Tawil Quaternary Aquifer System: Wadi Sirhan Basin,"6. Aquifer mostly confined, but some parts unconfined",Crystalline rock,0.089293981,0.02021717
+AS130,AS130,AS130_TBA,North Africa-Western Asia,Umm er Radhuma-Dammam Aquifer System (North): Widyan-Salman,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0.027216435,0.036194435
+AS131,AS131,AS131_TBA,North Africa-Western Asia,Wajid Aquifer System,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Sandstone,0.015046296,0.1054191
+AS138,AS138,AS138_MNG,South-Eastern Asia-Pacific & Europe,Tes River Basin,1. Whole aquifer unconfined,Sediment - Sand,0.000107639,0.22
+AS139,AS139,AS139_SAU,North Africa-Western Asia,Wasia-Biyadh-Aruma Aquifer System (South): Tawila-Mahra/cretaceous Sands,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.005381944,0.03638303
+AS140,AS140,AS140_TBA,North Africa-Western Asia,Umm er Radhuma-Dammam Aquifer System (centre): Gulf,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0,0.035
+AS141,AS141,AS141_TBA,North Africa-Western Asia,Umm er Radhuma-Dammam Aquifer System (South): Rub' al Khali,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Limestone,0.002806713,0.036106424
+AS142,AS142,AS142_TBA,North Africa-Western Asia,Basalt Aquifer System (West): Yarmouk Basin,"4. Aquifer mostly unconfined, but some parts confined",Crystalline rocks - Basalt,0.007696759,0.06000762
+AS143,AS143,AS143_TBA,North Africa-Western Asia,Basalt Aquifer System (South): Azraq-Dhuleil Basin,"4. Aquifer mostly unconfined, but some parts confined",Crystalline rocks - Basalt,0,0.06
+AS150,AS150,AS150_KAZ,Europe & Central Asia,Irtysh-Obsky,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.008680556,0.0681445
+AS151,AS151,AS151_BRN,South-Easthern Asia-Pacific,Limbang Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS17,AS017,AS17_ARM,Europe,Agstev-Akstafa/Tavush-Tovuz Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS19,AS019,AS19_KAZ,Europe & Central Asia,Pre-caspien,"7. Aquifer mostly semi-confined, but some parts unconfined",Sediment - Sand,0.002314815,0.132560832
+AS26,AS026,AS26_AZE,South-Eastern Asia-Pacific & Europe,Lenkoran/Astara,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS27,AS027,AS27_AZE,Europe,Samur Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS31,AS031,AS31_KAZ,Europe & Central Asia,South-Pred-Ural Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.01087963,0.06367537
+AS35,AS035,AS35_KAZ,Central Asia,Amu-Darya,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.75,0.133867
+AS36,AS036,AS36_KAZ,Central Asia,Syr Daria,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.038194444,0.10363465
+AS37,AS037,AS37_TKM,Central Asia,Birata-Urgench,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Gravel,9,0.04907734
+AS4,AS004,AS4_TBA,North Africa-Western Asia,Anti-Lebanon,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Limestone,0.329861111,0.105
+AS43,AS043,AS43_TJK,Central Asia,Karatag/North-Surhandarya Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS47,AS047,AS47_KAZ,Central Asia,Pretashkent Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.0895,0.064411462
+AS54,AS054,AS54_KAZ,Central Asia,South Talas Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Gravel,0.022256944,0.14285052
+AS55,AS055,AS55_KAZ,Central Asia,North Talas Aquifer,1. Whole aquifer unconfined,Sediment - Gravel,0.027777778,0.19
+AS71,AS071,AS71_KAZ,Central Asia,chu Basin,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Gravel,0.013888889,0.05065468
+AS72S1,AS072,AS72S1_CHN,South-Eastern Asia-Pacific & Central Asia,Illi River,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.046296296,0.1685052
+AS72S2,AS072,AS72S2_KAZ,South-Eastern Asia-Pacific & Central Asia,Illi River,1. Whole aquifer unconfined,Sediment - Gravel,0.013888889,0.19
+AS72S3,AS072,AS72S3_KAZ,South-Eastern Asia-Pacific & Central Asia,Illi River,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Gravel,0.047106481,0.0527578
+AS74,AS074,AS74_KAZ,South-Eastern Asia-Pacific & Central Asia,Tacheng Basin / Alakol,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.006655093,0.1667526
+AS76,AS076,AS76_KAZ,South-Eastern Asia-Pacific & Central Asia,Ertix River,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.020023148,0.170012436
+AS77,AS077,AS77_MNG,South-Eastern Asia-Pacific & Europe,Yenisei Upstream,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS78,AS078,AS78_IND,South-Eastern Asia-Pacific,Indus River Plain Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.028935185,0.16666497
+AS79,AS079,AS79_IND,South-Eastern Asia-Pacific,South of outer Himalayas aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.020833333,0.0760312
+AS80,AS080,AS80_BGD,South-Eastern Asia-Pacific,East Ganges River Plain Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.017361111,0.0760312
+AS81,AS081,AS81_CHN,South-Eastern Asia-Pacific,Nu River Valley Aquifer,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.046296296,0.1685052
+AS82,AS082,AS82_MMR,South-Eastern Asia-Pacific,Salween River Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS86,AS086,AS86_CHN,South-Eastern Asia-Pacific,Yalu River Valley,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Sand,0.013888889,0.06656716
+AS87,AS087,AS87_CHN,South-Eastern Asia-Pacific & Europe,Middle Heilongjiang - Amur River Basin,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS89,AS089,AS89_KHM,South-Eastern Asia-Pacific,cambodia Mekong River Delta Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sediment - Gravel,0.011574074,0.047578867
+AS90,AS090,AS90_LAO,South-Eastern Asia-Pacific,Khorat Plateau Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS91,AS091,AS91_LAO,South-Eastern Asia-Pacific,Lower Mekong River 2 Aquifer,8. No data (assumed unconfined),Sediment - Sand,0,0.22
+AS92,AS092,AS92_CHN,South-Eastern Asia-Pacific,Hong River Basin,1. Whole aquifer unconfined,Sediment - Sand,0.046296296,0.22
+AS93,AS093,AS93_CHN,South-Eastern Asia-Pacific,Downstream of Lancang River,3. Whole aquifer semi-confined,Sediment - Sand,0.040509259,0.11630936
+AS94,AS094,AS94_MNG,South-Eastern Asia-Pacific,Bulgan River,1. Whole aquifer unconfined,Sediment - Sand,0.000868056,0.22
+AS95,AS095,AS95_MNG,South-Eastern Asia-Pacific & Europe,Uvs lake Aquifer,"6. Aquifer mostly confined, but some parts unconfined",Sedimentary rocks - Sandstone,0.005763889,0.035176022
+AS96,AS096,AS96_MNG,South-Eastern Asia-Pacific & Europe,Shishhid River Aquifer,1. Whole aquifer unconfined,Sediment - Gravel,0.000367708,0.19
+AS97,AS097,AS97_MNG,South-Eastern Asia-Pacific & Europe,Delger River,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Sand,0.005763889,0.166822704
+AS98,AS098,AS98_MNG,South-Eastern Asia-Pacific & Europe,Zelter Basin,1. Whole aquifer unconfined,Sediment - Sand,0.000107639,0.22
+EB30,EB030,EB30_BIH,Europe,Bilecko Lake,1. Whole aquifer unconfined,Sedimentary rocks - Sandstone,0.0015,0.14
+EU10,EU010,EU10_PRT,Europe,Detrital aquifer of the Guadiana Middle Basin,"4. Aquifer mostly unconfined, but some parts confined",Sedimentary rocks - Shale,0.006365741,0.105058674
+EU108,EU108,EU108_EST,Europe,Ordivician - cambrian Groundwater Body,2. Whole aquifer confined,Sedimentary rocks - Sandstone,0.000405093,0.000110642
+EU109,EU109,EU109_EST,Europe,cambrian - Vendian - Voronka groundwater body / Lomonosovsky Aquifer,2. Whole aquifer confined,Sedimentary rocks - Sandstone,0.001041667,0.000124054
+EU24,EU024,EU24_CHE,Europe,Formations fluvio-glaciaires nappe profonde du Genevois,"4. Aquifer mostly unconfined, but some parts confined",Sediment - Gravel,0.200231481,0.142552578
+EU282,EU282,EU282_HUN,Europe,Upper Pannonian Thermal Aquifer,2. Whole aquifer confined,Sediment - Sand,0.002256944,0.08868156
+EU283,EU283,EU283_DEU,Europe,Belgian - Dutch - German Lowland Aquifer System,"7. Aquifer mostly semi-confined, but some parts unconfined",Sediment - Sand,0.046296296,0.1600416
+EU91,EU091,EU91_POL,Europe,Alluvial/Paleogene-Neogene and Oxfordian - cenomanien Aquifers,1. Whole aquifer unconfined,Sediment - Sand,0.001736111,0.22
+EU92,EU092,EU92_BLR,Europe,Alluvial/Paleogene-Neogene and Oxfordian - cenomanien Aquifers,1. Whole aquifer unconfined,Sediment - Sand,0.00150463,0.22
+EU93,EU093,EU93_BLR,Europe,Alluvial/Paleogene-Neogene and Oxfordian - cenomanien Aquifers,1. Whole aquifer unconfined,Sediment - Sand,0.00162037,0.22

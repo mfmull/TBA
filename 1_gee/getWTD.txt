@@ -1,0 +1,51 @@
+// ============================================================================
+// getWTD.txt -- sample natural (steady-state) water-table depth at the wells
+//
+// Purpose: well-level WTD values for proposed analysis A4
+// (2_Wells/39b_responses_addons.R, Part 3). Preferred layer: a NATURAL
+// equilibrium simulation (no pumping), which acts as a pre-treatment proxy
+// for natural lift cost. Two options:
+//
+//   (a) GLOBGM v1.0 steady-state WTD, 30 arc-sec (Verkaik et al. 2024,
+//       doi:10.5194/gmd-17-275-2024), public community asset -- used below.
+//   (b) Fan et al. 2013 (doi:10.1126/science.1229881) grids: if you obtain
+//       the netCDFs (thredds-gfnl.usc.es; see 2_Wells/get_wtd_fan.R which
+//       downloads AND samples them locally without GEE), or ingest them as
+//       an asset, add the image below alongside GLOBGM.
+//
+// Output: Drive CSV  wtd_by_well_globgm.csv  with columns id, wtd_globgm_ss_m.
+// To use in the pipeline, either rename the value column to wtd_fan_m ...
+// no -- keep names honest: 39b accepts ANY column starting with "wtd" in
+// 1_data/wtd_by_well.csv; it uses the FIRST such column and says which.
+// Merge this export with get_wtd_fan.R output if you want both layers.
+// ============================================================================
+
+var wells  = ee.FeatureCollection(
+  "projects/globaltbav2/assets/VectorBuffers/_Wells_JasechkoEtAlNature2024_Fig1");
+var wtdSS  = ee.Image(
+  "projects/sat-io/open-datasets/GLOBGM/STEADY-STATE/globgm-wtd-ss")
+  .rename("wtd_globgm_ss_m");
+
+// Check which property carries the well id used in wellsData.csv ("id").
+// If the asset uses a different name (e.g. system:index), adjust ID_PROP.
+print("first well:", wells.first());
+var ID_PROP = "id";
+
+// Nearest-cell sampling at native scale (~30 arc-sec ~ 926 m at the equator).
+var sampled = wtdSS.reduceRegions({
+  collection: wells,
+  reducer: ee.Reducer.first().setOutputs(["wtd_globgm_ss_m"]),
+  scale: 926.6254331387694,   // 30 arc-sec in metres at the equator
+  tileScale: 4
+});
+
+Export.table.toDrive({
+  collection: sampled.select([ID_PROP, "wtd_globgm_ss_m"], null, false),
+  description: "wtd_by_well_globgm",
+  fileNamePrefix: "wtd_by_well_globgm",
+  fileFormat: "CSV"
+});
+
+// After the task finishes: download from Drive, rename the id column to "id"
+// if needed, and save as (or merge into) 2_Wells/1_data/wtd_by_well.csv.
+// Then rerun 2_Wells/39b_responses_addons.R.

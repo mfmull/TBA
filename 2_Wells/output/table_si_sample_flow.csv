@@ -1,0 +1,8 @@
+step,wells,dropped
+raw wells in source file,144349,NA
+valid coordinates,144349,0
+valid depletion outcome (GWSlp),144349,0
+valid aquifer-country assignment and border distance,144349,0
+country with a land border (islands dropped),123160,21189
+segment has >= 20 wells,116581,6579
+segment passes outcome and matching-covariate eligibility [final H1 = H2 sample],116581,0

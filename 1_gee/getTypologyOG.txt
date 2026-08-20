@@ -1,0 +1,207 @@
+/**** ---------------------------------------------------------------------
+Groundwater-dependent irrigation and cropland statistics
+--------------------------------------------------------------------------
+
+This script aggregates several spatial indicators at administrative or
+basin levels using Google Earth Engine.
+
+Pixel-level variables are converted to area (hectares × 10³ = kHa) using
+pixel area and then summed over polygons using reduceRegions.
+
+Main indicators produced:
+- CR   : Cropland area
+- IR   : Irrigated cropland area
+- GW   : Groundwater-irrigated cropland
+- UR   : Urban area
+- CR3  : Cropland where groundwater stress > threshold
+- IR3  : Irrigated cropland where groundwater stress > threshold
+- GW3  : Groundwater irrigation where groundwater stress > threshold
+
+Outputs are summarized for:
+1. Countries
+2. TBA regions
+3. TBA regions within distance buffers of land boundaries
+   (5 km, 10 km, 100 km, 200 km)
+
+All outputs are exported as tables to Google Drive.
+
+---------------------------------------------------------------------- ****/
+var Irr1k = ee.Image("projects/globaltbav2/assets/IrrigationProjections/MaierIrrigatedArea"),
+    GWf = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWf"),
+    GWS = ee.Image("projects/globaltbav2/assets/IrrigationProjections/GWS_Rosa2020"),
+    BWS = ee.Image("projects/globaltbav2/assets/IrrigationProjections/BWS_Rosa2020"),
+    urb = ee.ImageCollection("JRC/GHSL/P2023A/GHS_SMOD"),
+    Crop = ee.Image("projects/globaltbav2/assets/IrrigationProjections/Crop1k_0307"),
+    TBA = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_TBA_Split_2025"),
+    lb = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/_LandBorders_2025"),
+    Country = ee.FeatureCollection("projects/globaltbav2/assets/VectorBuffers/GADM_Simplified");
+
+/**** ---------------------------------------------------------------------
+Prepare base rasters
+---------------------------------------------------------------------- ****/
+
+// Ensure irrigation mask has no missing values
+Irr1k = Irr1k.gt(0).unmask()
+
+// Cropland area in kHa per pixel
+var CR = Crop.unmask()
+  .multiply(ee.Image.pixelArea())
+  .divide(1e7)
+
+// Tile scale used in reducers (controls memory usage)
+var tiles = 16
+
+
+/**** ---------------------------------------------------------------------
+Urban area
+---------------------------------------------------------------------- ****/
+
+// Urban area derived from urban dataset (year 2005)
+// Threshold >20 represents urban class
+var Urb = ee.Image(
+    urb.filter(ee.Filter.calendarRange(2005,2005,'year')).first()
+  )
+  .gt(20)
+  .multiply(ee.Image.pixelArea())
+  .divide(1e7)
+
+
+/**** ---------------------------------------------------------------------
+Derived irrigation and groundwater indicators
+---------------------------------------------------------------------- ****/
+
+// Cropland located in groundwater stress areas
+var CR_GWS3 = CR.multiply(GWS.gt(2))
+
+// Irrigated cropland
+var IR = Irr1k.unmask().multiply(CR)
+
+// Groundwater-irrigated cropland
+var GW = Irr1k.multiply(GWf).multiply(CR)
+
+// Groundwater irrigation where basin water stress > threshold
+var GW_GWS3 = GW.multiply(BWS.gt(2))
+
+// Irrigated cropland where basin water stress > threshold
+var IR_GWS3 = IR.multiply(BWS.gt(2))
+
+
+/**** ---------------------------------------------------------------------
+Create image stack used for reductions
+---------------------------------------------------------------------- ****/
+
+var IM = ee.Image.pixelArea().rename('Area')
+  .addBands(GW.rename('GW'))
+  .addBands(CR_GWS3.rename('CR3'))
+  .addBands(Urb.rename('UR'))
+  .addBands(GW_GWS3.rename('GW3'))
+  .addBands(IR_GWS3.rename('IR3'))
+  .addBands(CR.rename('CR'))
+  .addBands(IR.rename('IR'))
+
+
+
+/**** ---------------------------------------------------------------------
+Country-level aggregation
+---------------------------------------------------------------------- ****/
+
+var outCntr = IM.reduceRegions({
+  collection: Country,
+  reducer: ee.Reducer.sum(),
+  scale: 1000,
+  tileScale: tiles
+})
+.map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(
+  outCntr,
+  'outCntr_Typol',
+  'TBA2',
+  'outCntr_Typol'
+)
+
+
+
+/**** ---------------------------------------------------------------------
+TBA regional aggregation
+---------------------------------------------------------------------- ****/
+
+Map.addLayer(TBA)
+
+// Sum statistics over TBA polygons
+var outTBA = IM.reduceRegions({
+  collection: TBA,
+  reducer: ee.Reducer.sum(),
+  scale: 1000,
+  tileScale: tiles
+})
+.map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(
+  outTBA,
+  'outTBA_Typol',
+  'TBA2',
+  'outTBA_Typol'
+)
+
+
+
+/**** ---------------------------------------------------------------------
+Distance-to-boundary analysis
+Pixels are limited to areas within specified distances from lb
+---------------------------------------------------------------------- ****/
+
+// 10 km buffer
+var outB10k = IM
+  .multiply(lb.distance(10000).lt(10000))
+  .reduceRegions({
+    collection: TBA,
+    reducer: ee.Reducer.sum(),
+    scale: 1000,
+    tileScale: tiles
+  })
+  .map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(outB10k,'outB10k_Typol','TBA2','outB10k_Typol')
+
+
+// 5 km buffer
+var outB5k = IM
+  .multiply(lb.distance(5000).lt(5000))
+  .reduceRegions({
+    collection: TBA,
+    reducer: ee.Reducer.sum(),
+    scale: 1000,
+    tileScale: tiles
+  })
+  .map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(outB5k,'outB5k_Typol','TBA2','outB5k_Typol')
+
+
+// 100 km buffer
+var outB100k = IM
+  .multiply(lb.distance(100000).lt(100000))
+  .reduceRegions({
+    collection: TBA,
+    reducer: ee.Reducer.sum(),
+    scale: 1000,
+    tileScale: tiles
+  })
+  .map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(outB100k,'outB100k_Typol','TBA2','outB100k_Typol')
+
+
+// 200 km buffer
+var outB200k = IM
+  .multiply(lb.distance(200000).lt(200000))
+  .reduceRegions({
+    collection: TBA,
+    reducer: ee.Reducer.sum(),
+    scale: 1000,
+    tileScale: tiles
+  })
+  .map(function(ft){ return ft.setGeometry(null) })
+
+Export.table.toDrive(outB200k,'outB200k_Typol','TBA2','outB200k_Typol')

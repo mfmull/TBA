@@ -1,0 +1,9 @@
+characteristic,transboundary,domestic
+aquifer-country segments,44,654
+physical aquifers,40,654
+countries,13,16
+observation wells,6976,109605
+median wells per segment,84,49
+median well-to-border distance (km),69.8560201693697,613.225721174891
+share of wells within 100 km of a border,0.5832855504587156,0.030427444003466995
+effective sample size (overlap weights),43.79367073116549,480.37090564026926
