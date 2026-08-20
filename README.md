@@ -159,7 +159,7 @@ A Google Earth Engine account is needed for `1_gee/`.
 
 ## Citation
 
-See `CITATION.cff`. A frozen release will be archived on Zenodo on publication.
+See `CITATION.cff`. 
 
 ## License
 
