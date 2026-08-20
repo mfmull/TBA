@@ -3,13 +3,5 @@ title: "Replication code and data for: Geography of groundwater use and depletio
 authors:
   - family-names: Mueller
     given-names: Marc F.
-  - family-names: Davis
-    given-names: Kyle F.
-  - family-names: Faure
-    given-names: Julie
-  - family-names: Chiarelli
-    given-names: Davide Danilo
-  - family-names: Hung
-    given-names: Fengwei
 repository-code: https://github.com/mfmull/TBA
 license: MIT
